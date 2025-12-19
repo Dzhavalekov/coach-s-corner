@@ -3,15 +3,18 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary">
       {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})`, backgroundPosition: 'center 20%' }}
-      />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <img 
+          src={heroImage} 
+          alt="Football coach with young players"
+          className="w-full h-full object-cover object-top"
+        />
+      </div>
       
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
