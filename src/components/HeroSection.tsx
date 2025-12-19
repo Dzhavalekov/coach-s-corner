@@ -3,22 +3,14 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary">
-      {/* Hero image (sharp, fully visible) + blurred fill behind it */}
-      <div className="absolute inset-0">
-        <img
-          src={heroImage}
-          alt="Football coach guiding young players on the field"
-          className="absolute inset-0 h-full w-full object-cover scale-110 blur-md"
-          loading="eager"
-        />
-        <img
-          src={heroImage}
-          alt="Football coach with young players"
-          className="absolute inset-0 h-full w-full object-contain"
-          loading="eager"
-        />
-      </div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image - full cover */}
+      <img
+        src={heroImage}
+        alt="Football coach with young players"
+        className="absolute inset-0 h-full w-full object-cover object-[center_25%]"
+        loading="eager"
+      />
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/65" />
