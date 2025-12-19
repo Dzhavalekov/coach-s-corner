@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section className="relative h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-end justify-center overflow-hidden pb-20">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-top bg-no-repeat"
+        className="absolute inset-0 bg-contain bg-center bg-no-repeat md:bg-cover"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
       
