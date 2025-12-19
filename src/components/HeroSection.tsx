@@ -3,22 +3,24 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[100svh] flex items-end justify-center overflow-hidden pb-20">
+    <section className="relative min-h-[100svh] md:min-h-[105svh] lg:min-h-[110svh] flex items-end justify-center overflow-hidden pb-20">
       {/* Background Image (sharp) + blurred fill to avoid empty space */}
       <div className="absolute inset-0">
+        {/* Mobile-only blurred fill (prevents empty space when using contain) */}
         <img
           src={heroImage}
           alt=""
           aria-hidden="true"
-          className="h-full w-full object-cover scale-110 blur-xl"
+          className="h-full w-full object-cover scale-110 blur-xl md:hidden"
           loading="eager"
           decoding="async"
         />
+        {/* Sharp image: show full photo on mobile, fill width on tablet/desktop */}
         <img
           src={heroImage}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-contain object-[50%_18%]"
+          className="absolute inset-0 h-full w-full object-contain object-[50%_18%] md:object-cover md:object-center"
           loading="eager"
           decoding="async"
         />
