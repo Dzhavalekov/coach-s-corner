@@ -1,6 +1,7 @@
 import heroImageMobile from "@/assets/hero-coach.png";
-import heroImageDesktop from "@/assets/hero-coach-desktop.jpg";
 import { Button } from "@/components/ui/button";
+
+const heroImageDesktop = "/images/hero-coach-desktop.jpg";
 
 const HeroSection = () => {
   return (
