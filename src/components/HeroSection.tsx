@@ -1,26 +1,35 @@
-import heroImage from "@/assets/hero-coach.png";
+import heroImageMobile from "@/assets/hero-coach.png";
+import heroImageDesktop from "@/assets/hero-coach-desktop.jpg";
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[100svh] md:min-h-[105svh] lg:min-h-[110svh] flex items-end justify-center overflow-hidden pb-20">
-      {/* Background Image (sharp) + blurred fill to avoid empty space */}
+    <section className="relative min-h-[100svh] flex items-end justify-center overflow-hidden pb-20">
+      {/* Background Images */}
       <div className="absolute inset-0">
-        {/* Mobile-only blurred fill (prevents empty space when using contain) */}
+        {/* Mobile: blurred fill + sharp contain */}
         <img
-          src={heroImage}
+          src={heroImageMobile}
           alt=""
           aria-hidden="true"
           className="h-full w-full object-cover scale-110 blur-xl md:hidden"
           loading="eager"
           decoding="async"
         />
-        {/* Sharp image: show full photo on mobile, fill width on tablet/desktop */}
         <img
-          src={heroImage}
+          src={heroImageMobile}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-contain object-[50%_18%] md:object-cover md:object-center"
+          className="absolute inset-0 h-full w-full object-contain object-[50%_18%] md:hidden"
+          loading="eager"
+          decoding="async"
+        />
+        {/* Tablet/Desktop: new image, full width, show all people */}
+        <img
+          src={heroImageDesktop}
+          alt=""
+          aria-hidden="true"
+          className="hidden md:block absolute inset-0 h-full w-full object-cover object-[50%_30%]"
           loading="eager"
           decoding="async"
         />
