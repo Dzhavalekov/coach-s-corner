@@ -1,20 +1,27 @@
-import heroImage from "@/assets/hero-coach.png";
+import heroImage from "@/assets/hero-coach-v2.png";
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary">
-      {/* Background Image */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <img 
-          src={heroImage} 
+      {/* Hero image (sharp, fully visible) + blurred fill behind it */}
+      <div className="absolute inset-0">
+        <img
+          src={heroImage}
+          alt="Football coach guiding young players on the field"
+          className="absolute inset-0 h-full w-full object-cover scale-110 blur-md"
+          loading="eager"
+        />
+        <img
+          src={heroImage}
           alt="Football coach with young players"
-          className="w-full h-full object-cover object-top"
+          className="absolute inset-0 h-full w-full object-contain"
+          loading="eager"
         />
       </div>
-      
+
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/65" />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
