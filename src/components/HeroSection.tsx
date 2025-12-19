@@ -3,15 +3,29 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-end justify-center overflow-hidden pb-20">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-contain bg-center bg-no-repeat md:bg-cover"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      />
-      
+    <section className="relative min-h-[100svh] flex items-end justify-center overflow-hidden pb-20">
+      {/* Background Image (sharp) + blurred fill to avoid empty space */}
+      <div className="absolute inset-0">
+        <img
+          src={heroImage}
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover scale-110 blur-xl"
+          loading="eager"
+          decoding="async"
+        />
+        <img
+          src={heroImage}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-contain object-[50%_18%]"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60" />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
