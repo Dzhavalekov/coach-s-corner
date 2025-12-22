@@ -25,12 +25,20 @@ const HeroSection = () => {
           loading="eager"
           decoding="async"
         />
-        {/* Tablet/Desktop: new image, full width, show all people */}
+        {/* Tablet/Desktop: blurred fill + sharp contain */}
         <img
           src={heroImageDesktop}
           alt=""
           aria-hidden="true"
-          className="hidden md:block absolute inset-0 h-full w-full object-cover object-[50%_30%]"
+          className="hidden md:block h-full w-full object-cover scale-110 blur-xl"
+          loading="eager"
+          decoding="async"
+        />
+        <img
+          src={heroImageDesktop}
+          alt=""
+          aria-hidden="true"
+          className="hidden md:block absolute inset-0 h-full w-full object-contain object-center"
           loading="eager"
           decoding="async"
         />
