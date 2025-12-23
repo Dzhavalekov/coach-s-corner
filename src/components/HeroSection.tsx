@@ -2,13 +2,13 @@ import heroImage from "@/assets/hero-coach-new.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
       {/* Background Image - Full contain to show entire image */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
           alt="Футболен треньор с деца на терена"
-          className="h-full w-full object-contain"
+          className="h-full w-full object-cover"
           loading="eager"
           decoding="async"
         />
