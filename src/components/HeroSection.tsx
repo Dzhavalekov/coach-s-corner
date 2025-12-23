@@ -1,76 +1,28 @@
 import heroImageMobile from "@/assets/hero-coach.png";
-import { Button } from "@/components/ui/button";
 
 const heroImageDesktop = "/images/hero-coach-desktop.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[100svh] flex items-end justify-center overflow-hidden pb-20">
-      {/* Background Images */}
+    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+      {/* Background Images - Full cover */}
       <div className="absolute inset-0">
-        {/* Mobile: blurred fill + sharp contain */}
+        {/* Mobile */}
         <img
           src={heroImageMobile}
-          alt=""
-          aria-hidden="true"
-          className="h-full w-full object-cover scale-110 blur-xl md:hidden"
+          alt="Футболен треньор"
+          className="h-full w-full object-cover md:hidden"
           loading="eager"
           decoding="async"
         />
-        <img
-          src={heroImageMobile}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-contain object-[50%_18%] md:hidden"
-          loading="eager"
-          decoding="async"
-        />
-        {/* Tablet/Desktop: blurred fill + sharp contain */}
+        {/* Desktop */}
         <img
           src={heroImageDesktop}
-          alt=""
-          aria-hidden="true"
-          className="hidden md:block h-full w-full object-cover scale-110 blur-xl"
+          alt="Футболен треньор"
+          className="hidden md:block h-full w-full object-cover"
           loading="eager"
           decoding="async"
         />
-        <img
-          src={heroImageDesktop}
-          alt=""
-          aria-hidden="true"
-          className="hidden md:block absolute inset-0 h-full w-full object-contain object-center"
-          loading="eager"
-          decoding="async"
-        />
-      </div>
-
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60" />
-      
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 animate-fade-in">
-          Футболен треньор
-        </h1>
-        <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-          Развивам млади таланти чрез индивидуален подход, 
-          дисциплина и любов към играта
-        </p>
-        <Button 
-          size="lg" 
-          className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold px-8 py-6 text-lg animate-fade-in"
-          style={{ animationDelay: "0.4s" }}
-          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-        >
-          Свържи се с мен
-        </Button>
-      </div>
-      
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/70 rounded-full mt-2" />
-        </div>
       </div>
     </section>
   );
