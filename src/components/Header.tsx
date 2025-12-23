@@ -38,35 +38,21 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Desktop Navigation - Left Side */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-4">
             {navLinks.map((link) => (
-              <button
+              <Button
                 key={link.href}
+                size="sm"
+                className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
                 onClick={() => scrollToSection(link.href)}
-                className={`font-medium transition-colors hover:text-secondary ${
-                  isScrolled ? "text-foreground" : "text-white"
-                }`}
               >
                 {link.label}
-              </button>
+              </Button>
             ))}
-            <Button
-              size="sm"
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
-              onClick={() => scrollToSection("#contact")}
-            >
-              Свържи се
-            </Button>
           </nav>
 
-          <a
-            href="#"
-            className={`font-heading font-bold text-xl transition-colors ${
-              isScrolled ? "text-primary" : "text-white"
-            }`}
-          >
-            Coach
-          </a>
+          {/* Spacer for mobile to push menu button to the right */}
+          <div className="md:hidden" />
 
           {/* Mobile Menu Button */}
           <button
