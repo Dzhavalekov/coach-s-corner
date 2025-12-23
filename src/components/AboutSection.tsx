@@ -28,16 +28,13 @@ const AboutSection = () => {
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-primary to-secondary mx-auto mb-6 rounded-full" />
           <div className="max-w-3xl mx-auto space-y-5 text-left">
-            <p className="text-xl md:text-2xl font-medium text-foreground leading-relaxed">
-              Футболът за мен не е просто тренировки и мачове. Той е процес, в който децата се учат да <span className="text-primary font-semibold">вярват в себе си</span>, да работят в екип и да не се отказват, когато стане трудно.
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Футболът за мен не е просто тренировки и мачове. Той е процес, в който децата се учат да вярват в себе си, да работят в екип и да не се отказват, когато стане трудно.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              В работата си като треньор поставям фокуса върху <span className="text-foreground font-medium">развитието на играча</span>, а не само върху резултата. Вярвам, че когато основите са здрави – техника, дисциплина и правилно мислене – успехите идват естествено.
+              Като треньор се стремя да създавам среда, в която децата се чувстват уверени, мотивирани и разбрани. Работя с ясна структура, внимание към детайла и индивидуален подход към всеки играч.
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Като треньор се стремя да създавам среда, в която децата се чувстват <span className="text-foreground font-medium">уверени, мотивирани и разбрани</span>. Работя с ясна структура, внимание към детайла и индивидуален подход към всеки играч.
-            </p>
-            <p className="text-lg md:text-xl text-primary font-semibold leading-relaxed border-l-4 border-secondary pl-4">
+            <p className="text-lg text-muted-foreground leading-relaxed border-l-4 border-secondary pl-4">
               Целта ми е проста – да помагам на децата да се развиват като футболисти и като личности.
             </p>
           </div>
