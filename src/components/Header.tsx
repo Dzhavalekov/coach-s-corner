@@ -37,16 +37,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a
-            href="#"
-            className={`font-heading font-bold text-xl transition-colors ${
-              isScrolled ? "text-primary" : "text-white"
-            }`}
-          >
-            Coach
-          </a>
-
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Left Side */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <button
@@ -67,6 +58,15 @@ const Header = () => {
               Свържи се
             </Button>
           </nav>
+
+          <a
+            href="#"
+            className={`font-heading font-bold text-xl transition-colors ${
+              isScrolled ? "text-primary" : "text-white"
+            }`}
+          >
+            Coach
+          </a>
 
           {/* Mobile Menu Button */}
           <button
