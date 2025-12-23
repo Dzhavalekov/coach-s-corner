@@ -8,7 +8,7 @@ const HeroSection = () => {
         <img
           src={heroImage}
           alt="Футболен треньор с деца на терена"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-top"
           loading="eager"
           decoding="async"
         />
