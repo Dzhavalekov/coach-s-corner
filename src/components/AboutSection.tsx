@@ -23,10 +23,10 @@ const AboutSection = () => {
     <section id="about" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-fade-in">
             За мен
           </h2>
-          <div className="w-20 h-1 bg-secondary mx-auto mb-6" />
+          <div className="w-24 h-1.5 bg-gradient-to-r from-primary to-secondary mx-auto mb-6 rounded-full" />
           <div className="text-muted-foreground max-w-3xl mx-auto text-lg space-y-4 text-left">
             <p>
               Футболът за мен не е просто тренировки и мачове. Той е процес, в който децата се учат да вярват в себе си, да работят в екип и да не се отказват, когато стане трудно.
