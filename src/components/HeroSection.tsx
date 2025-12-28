@@ -16,27 +16,27 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden">
-      {/* Background image with parallax, blur and desaturation */}
+      {/* Background image with parallax and enhanced visibility */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
         style={{
           backgroundImage: `url(${heroBackground})`,
-          filter: 'blur(2px) saturate(0.95)',
+          filter: 'blur(1.5px) brightness(1.1) contrast(1.05) saturate(1.08)',
           transform: `translateY(${scrollY * 0.5}px) scale(1.1)`,
         }}
       />
       
-      {/* Dark overlay */}
+      {/* Dark overlay - reduced */}
       <div 
         className="absolute inset-0"
-        style={{ backgroundColor: 'rgba(0, 0, 0, 0.55)' }}
+        style={{ backgroundColor: 'rgba(0, 0, 0, 0.42)' }}
       />
       
-      {/* Gradient overlay */}
+      {/* Gradient overlay - adjusted */}
       <div 
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.35) 100%)'
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.25) 100%)'
         }}
       />
       
@@ -69,7 +69,7 @@ const HeroSection = () => {
             и вяра в себе си. Тук изграждаме характер в сигурна и подкрепяща среда.
           </p>
           
-          {/* CTAs */}
+          {/* CTAs with hover animations */}
           <div 
             className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start opacity-0 animate-fade-in"
             style={{ animationDelay: "0.3s" }}
@@ -77,7 +77,7 @@ const HeroSection = () => {
             <Button 
               variant="default"
               size="lg" 
-              className="font-medium px-8 py-6 text-base"
+              className="font-medium px-8 py-6 text-base transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
               onClick={() => document.getElementById('philosophy')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Научи повече за моя подход
@@ -85,7 +85,7 @@ const HeroSection = () => {
             <Button 
               variant="default"
               size="lg" 
-              className="font-medium px-8 py-6 text-base"
+              className="font-medium px-8 py-6 text-base transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Свържи се с мен
