@@ -1,6 +1,12 @@
 import { CheckCircle, Clock, Shield, User, MessageCircle } from "lucide-react";
+import { HeroHighlight } from "@/components/ui/hero-highlight";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const ApproachSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   const approaches = [
     {
       icon: Clock,
@@ -44,55 +50,89 @@ const ApproachSection = () => {
     },
   ];
 
+  const headerTexts = [
+    "Всеки детайл в моята работа е обмислен така, че децата да се чувстват сигурни, мотивирани и подкрепени.",
+  ];
+
   return (
     <section id="approach" className="py-24 lg:py-32 bg-muted">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <p className="text-primary font-medium mb-3 uppercase tracking-wide text-sm">Подход</p>
-            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-foreground mb-6">
-              Как работя с децата
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Всеки детайл в моята работа е обмислен така, че децата да се 
-              чувстват сигурни, мотивирани и подкрепени.
-            </p>
-          </div>
+      <HeroHighlight containerClassName="h-auto">
+        <div className="container mx-auto px-4" ref={ref}>
+          <div className="max-w-6xl mx-auto">
+            {/* Header */}
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              <p className="text-primary mb-3 uppercase tracking-wide text-sm">Подход</p>
+              <h2 className="text-3xl md:text-4xl font-heading font-semibold text-foreground mb-6">
+                Как работя с децата
+              </h2>
+              {headerTexts.map((text, index) => (
+                <motion.p
+                  key={index}
+                  className="text-lg text-muted-foreground leading-relaxed rounded-lg px-3 py-2"
+                  initial={{ backgroundSize: "0% 100%" }}
+                  animate={isInView ? { backgroundSize: "100% 100%" } : { backgroundSize: "0% 100%" }}
+                  transition={{ 
+                    duration: 1.2, 
+                    ease: "easeOut", 
+                    delay: 0.2 + index * 0.4 
+                  }}
+                  style={{
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "left center",
+                    backgroundImage: "linear-gradient(to right, hsl(var(--primary) / 0.08), hsl(var(--primary) / 0.12))",
+                  }}
+                >
+                  {text}
+                </motion.p>
+              ))}
+            </div>
 
-          {/* Approaches grid */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {approaches.map((approach, index) => (
-              <div 
-                key={index} 
-                className="bg-card p-8 rounded-xl border border-border"
-              >
-                <div className="flex items-center gap-4 mb-5">
-                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <approach.icon className="w-5 h-5 text-primary" />
+            {/* Approaches grid */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {approaches.map((approach, index) => (
+                <motion.div 
+                  key={index} 
+                  className="bg-card p-8 rounded-xl border border-border"
+                  initial={{ backgroundSize: "0% 100%" }}
+                  animate={isInView ? { backgroundSize: "100% 100%" } : { backgroundSize: "0% 100%" }}
+                  transition={{ 
+                    duration: 1.2, 
+                    ease: "easeOut", 
+                    delay: 0.6 + index * 0.3 
+                  }}
+                  style={{
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "left center",
+                    backgroundImage: "linear-gradient(to right, hsl(var(--primary) / 0.05), hsl(var(--primary) / 0.08))",
+                  }}
+                >
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <approach.icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-heading font-semibold text-foreground">
+                      {approach.title}
+                    </h3>
                   </div>
-                  <h3 className="text-xl font-heading font-semibold text-foreground">
-                    {approach.title}
-                  </h3>
-                </div>
-                
-                <p className="text-muted-foreground mb-5 leading-relaxed">
-                  {approach.description}
-                </p>
-                
-                <ul className="space-y-2">
-                  {approach.points.map((point, pointIndex) => (
-                    <li key={pointIndex} className="flex items-center gap-3">
-                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+                  
+                  <p className="text-muted-foreground mb-5 leading-relaxed">
+                    {approach.description}
+                  </p>
+                  
+                  <ul className="space-y-2">
+                    {approach.points.map((point, pointIndex) => (
+                      <li key={pointIndex} className="flex items-center gap-3">
+                        <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </HeroHighlight>
     </section>
   );
 };
