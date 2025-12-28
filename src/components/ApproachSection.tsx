@@ -1,4 +1,4 @@
-import { CheckCircle, Clock, Shield, User, MessageCircle } from "lucide-react";
+import { CheckCircle, Clock, User, MessageCircle } from "lucide-react";
 import { HeroHighlight } from "@/components/ui/hero-highlight";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -17,16 +17,6 @@ const ApproachSection = () => {
         "Загрявка, техника, игра",
         "Последователност в правилата",
         "Ясни инструкции",
-      ],
-    },
-    {
-      icon: Shield,
-      title: "Безопасност и грижа",
-      description: "Физическата и емоционална безопасност на децата е на първо място.",
-      points: [
-        "Подходящо натоварване",
-        "Нулева толерантност към тормоз",
-        "Внимание към здравето",
       ],
     },
     {
@@ -90,8 +80,8 @@ const ApproachSection = () => {
 
             {/* Main layout: cards on left, image on right */}
             <div className="grid lg:grid-cols-2 gap-10 items-center">
-              {/* Cards column */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Cards column - stacked vertically */}
+              <div className="flex flex-col gap-4">
                 {approaches.map((approach, index) => (
                   <motion.div 
                     key={index} 
@@ -134,14 +124,14 @@ const ApproachSection = () => {
                 ))}
               </div>
 
-              {/* Image column */}
-              <div className="flex justify-center lg:justify-end order-first lg:order-last">
-                <div className="relative max-w-sm">
-                  <div className="absolute -inset-4 bg-primary/5 rounded-2xl rotate-2" />
+              {/* Image column - full width */}
+              <div className="flex justify-center lg:justify-start order-first lg:order-last">
+                <div className="relative w-full max-w-md">
+                  <div className="absolute -inset-4 bg-primary/5 rounded-2xl rotate-1" />
                   <img
                     src={coachWithChildImage}
                     alt="Треньор работи с дете на терена"
-                    className="relative w-full h-auto rounded-2xl shadow-lg object-cover aspect-[4/5]"
+                    className="relative w-full h-auto rounded-2xl shadow-lg object-cover"
                     loading="lazy"
                   />
                 </div>
