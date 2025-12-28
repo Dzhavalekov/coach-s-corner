@@ -49,7 +49,7 @@ const Header = () => {
             <img 
               src={logo} 
               alt="Football Academy Logo" 
-              className="h-12 md:h-14 w-auto"
+              className="h-14 md:h-16 w-auto mix-blend-multiply dark:mix-blend-screen dark:invert"
             />
           </a>
 
