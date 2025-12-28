@@ -16,27 +16,26 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden">
-      {/* Background image with parallax and enhanced visibility */}
+      {/* Background image with parallax */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
         style={{
           backgroundImage: `url(${heroBackground})`,
-          filter: 'blur(1.5px) brightness(1.1) contrast(1.05) saturate(1.08)',
-          transform: `translateY(${scrollY * 0.5}px) scale(1.1)`,
+          transform: `translateY(${scrollY * 0.4}px) scale(1.05)`,
         }}
       />
       
-      {/* Dark overlay - reduced */}
+      {/* Light dark overlay (35-40% opacity) */}
       <div 
         className="absolute inset-0"
-        style={{ backgroundColor: 'rgba(0, 0, 0, 0.42)' }}
+        style={{ backgroundColor: 'rgba(0, 0, 0, 0.37)' }}
       />
       
-      {/* Gradient overlay - adjusted */}
+      {/* Left-to-right gradient overlay - darker left, lighter right */}
       <div 
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.25) 100%)'
+          background: 'linear-gradient(to right, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.15) 60%, rgba(0, 0, 0, 0.05) 100%)'
         }}
       />
       
