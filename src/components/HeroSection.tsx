@@ -42,14 +42,6 @@ const HeroSection = () => {
       
       <div className="container mx-auto px-12 md:px-16 lg:px-20 py-24 md:py-28 relative z-10">
         <div className="max-w-[600px] text-center md:text-left">
-          {/* Badge */}
-          <div 
-            className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-8 opacity-0 animate-fade-in"
-          >
-            <span className="w-2 h-2 bg-primary rounded-full" />
-            <span className="text-sm text-white/85 font-medium">Детско-юношески футбол в София</span>
-          </div>
-          
           {/* Main headline */}
           <h1 
             className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-semibold md:font-bold leading-[1.1] md:leading-[1.15] mb-6 opacity-0 animate-fade-in max-w-[520px] md:max-w-[600px]" 
