@@ -131,7 +131,7 @@ const ApproachSection = () => {
                   <img
                     src={coachWithChildImage}
                     alt="Треньор работи с дете на терена"
-                    className="relative w-full h-full rounded-2xl shadow-lg object-cover"
+                    className="relative w-full h-full rounded-2xl shadow-lg object-contain"
                     loading="lazy"
                   />
                 </div>
