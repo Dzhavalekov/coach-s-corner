@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,11 +44,13 @@ const Header = () => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className={`font-heading font-semibold text-xl transition-colors ${
-              isScrolled ? "text-foreground" : "text-white"
-            }`}
+            className="transition-transform hover:scale-105"
           >
-            Треньор
+            <img 
+              src={logo} 
+              alt="Football Academy Logo" 
+              className="h-12 md:h-14 w-auto"
+            />
           </a>
 
           {/* Desktop Navigation */}
