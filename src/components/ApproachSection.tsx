@@ -79,7 +79,7 @@ const ApproachSection = () => {
             </div>
 
             {/* Main layout: cards on left, image on right */}
-            <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div className="grid lg:grid-cols-2 gap-10 items-stretch">
               {/* Cards column - stacked vertically */}
               <div className="flex flex-col gap-4">
                 {approaches.map((approach, index) => (
@@ -124,14 +124,14 @@ const ApproachSection = () => {
                 ))}
               </div>
 
-              {/* Image column - full width */}
-              <div className="flex justify-center lg:justify-start order-first lg:order-last">
-                <div className="relative w-full max-w-md">
+              {/* Image column - full height to match cards */}
+              <div className="flex justify-center lg:justify-start order-first lg:order-last h-full">
+                <div className="relative w-full h-full">
                   <div className="absolute -inset-4 bg-primary/5 rounded-2xl rotate-1" />
                   <img
                     src={coachWithChildImage}
                     alt="Треньор работи с дете на терена"
-                    className="relative w-full h-auto rounded-2xl shadow-lg object-cover"
+                    className="relative w-full h-full rounded-2xl shadow-lg object-cover"
                     loading="lazy"
                   />
                 </div>
