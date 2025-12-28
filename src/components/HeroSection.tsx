@@ -41,23 +41,22 @@ const HeroSection = () => {
       
       <div className="container mx-auto px-12 md:px-16 lg:px-20 py-24 md:py-28 relative z-10">
         <div className="max-w-[600px] text-center md:text-left">
-          {/* Main headline */}
+          {/* Main headline - shorter, stronger */}
           <h1 
             className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-semibold md:font-bold leading-[1.1] md:leading-[1.15] mb-6 opacity-0 animate-fade-in max-w-[520px] md:max-w-[600px]" 
-            style={{ color: '#FFFFFF', animationDelay: "0.1s" }}
+            style={{ color: '#FFFFFF', animationDelay: "0.15s", animationDuration: "0.4s", animationFillMode: "forwards" }}
           >
             Помагам на децата да растат{" "}
-            <span className="text-primary">уверени</span>, силни и{" "}
-            <span className="text-primary">щастливи</span>
+            <span className="text-primary">уверени</span> и щастливи чрез футбола
           </h1>
           
-          {/* Subheadline */}
+          {/* Subheadline - explains how */}
           <p 
             className="text-base md:text-lg lg:text-xl max-w-[480px] md:max-w-[520px] mb-10 leading-[1.4] md:leading-[1.5] opacity-0 animate-fade-in" 
-            style={{ color: 'rgba(255, 255, 255, 0.85)', animationDelay: "0.2s" }}
+            style={{ color: 'rgba(255, 255, 255, 0.85)', animationDelay: "0.35s", animationDuration: "0.4s", animationFillMode: "forwards" }}
           >
             Футболът е повече от игра – той учи децата на дисциплина, работа в екип 
-            и вяра в себе си. Тук изграждаме характер в сигурна и подкрепяща среда.
+            и вяра в себе си, в сигурна и подкрепяща среда.
           </p>
           
           {/* CTAs with hover animations */}
@@ -68,7 +67,7 @@ const HeroSection = () => {
             <Button 
               variant="default"
               size="lg" 
-              className="font-medium px-8 py-6 text-base transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
+              className="font-medium px-8 py-6 text-base transition-all duration-300 hover:scale-105 hover:brightness-110 hover:shadow-lg hover:shadow-primary/30"
               onClick={() => document.getElementById('philosophy')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Научи повече за моя подход
@@ -76,7 +75,7 @@ const HeroSection = () => {
             <Button 
               variant="default"
               size="lg" 
-              className="font-medium px-8 py-6 text-base transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
+              className="font-medium px-8 py-6 text-base transition-all duration-300 hover:scale-105 hover:brightness-110 hover:shadow-lg hover:shadow-primary/30"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Свържи се с мен
