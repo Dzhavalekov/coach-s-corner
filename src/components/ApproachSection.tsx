@@ -125,7 +125,7 @@ const ApproachSection = () => {
               </div>
 
               {/* Image column - full height to match cards */}
-              <div className="flex justify-center lg:justify-start order-first lg:order-last h-full">
+              <div className="flex justify-center lg:justify-start order-first lg:order-last h-full min-h-[500px] lg:min-h-[600px]">
                 <div className="relative w-full h-full">
                   <div className="absolute -inset-4 bg-primary/5 rounded-2xl rotate-1" />
                   <img
