@@ -2,6 +2,7 @@ import { CheckCircle, Clock, Shield, User, MessageCircle } from "lucide-react";
 import { HeroHighlight } from "@/components/ui/hero-highlight";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import coachWithChildImage from "@/assets/coach-with-child.jpg";
 
 const ApproachSection = () => {
   const ref = useRef(null);
@@ -87,9 +88,9 @@ const ApproachSection = () => {
               ))}
             </div>
 
-            {/* Approaches grid */}
+            {/* Approaches grid with image */}
             <div className="grid md:grid-cols-2 gap-8">
-              {approaches.map((approach, index) => (
+              {approaches.slice(0, 2).map((approach, index) => (
                 <motion.div 
                   key={index} 
                   className="bg-card p-8 rounded-xl border border-border"
@@ -99,6 +100,63 @@ const ApproachSection = () => {
                     duration: 1.2, 
                     ease: "easeOut", 
                     delay: 0.6 + index * 0.3 
+                  }}
+                  style={{
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "left center",
+                    backgroundImage: "linear-gradient(to right, hsl(var(--primary) / 0.05), hsl(var(--primary) / 0.08))",
+                  }}
+                >
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <approach.icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-heading font-semibold text-foreground">
+                      {approach.title}
+                    </h3>
+                  </div>
+                  
+                  <p className="text-muted-foreground mb-5 leading-relaxed">
+                    {approach.description}
+                  </p>
+                  
+                  <ul className="space-y-2">
+                    {approach.points.map((point, pointIndex) => (
+                      <li key={pointIndex} className="flex items-center gap-3">
+                        <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Image positioned between cards */}
+            <div className="my-12 flex justify-center">
+              <div className="relative max-w-md">
+                <div className="absolute -inset-4 bg-primary/5 rounded-2xl rotate-2" />
+                <img
+                  src={coachWithChildImage}
+                  alt="Треньор работи с дете на терена"
+                  className="relative w-full h-auto rounded-2xl shadow-lg object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            {/* Second row of approaches */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {approaches.slice(2).map((approach, index) => (
+                <motion.div 
+                  key={index + 2} 
+                  className="bg-card p-8 rounded-xl border border-border"
+                  initial={{ backgroundSize: "0% 100%" }}
+                  animate={isInView ? { backgroundSize: "100% 100%" } : { backgroundSize: "0% 100%" }}
+                  transition={{ 
+                    duration: 1.2, 
+                    ease: "easeOut", 
+                    delay: 1.2 + index * 0.3 
                   }}
                   style={{
                     backgroundRepeat: "no-repeat",
