@@ -1,9 +1,9 @@
 const Footer = () => {
   return (
-    <footer className="bg-primary py-8 text-primary-foreground">
+    <footer className="py-8 bg-background border-t border-border">
       <div className="container mx-auto px-4 text-center">
-        <p className="text-primary-foreground/70 text-sm">
-          © {new Date().getFullYear()} Football Coach. Всички права запазени.
+        <p className="text-muted-foreground text-sm">
+          © {new Date().getFullYear()} Футболен треньор. Всички права запазени.
         </p>
       </div>
     </footer>

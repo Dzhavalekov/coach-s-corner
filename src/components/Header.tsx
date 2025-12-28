@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,8 +15,8 @@ const Header = () => {
 
   const navLinks = [
     { label: "За мен", href: "#about" },
-    { label: "Опит", href: "#experience" },
-    { label: "Услуги", href: "#services" },
+    { label: "Философия", href: "#philosophy" },
+    { label: "Как работя", href: "#approach" },
     { label: "Контакти", href: "#contact" },
   ];
 
@@ -37,54 +36,52 @@ const Header = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Desktop Navigation - Left Side */}
-          <nav className="hidden md:flex items-center gap-4">
+          {/* Logo/Name */}
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="font-heading font-semibold text-xl text-foreground"
+          >
+            Треньор
+          </a>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Button
+              <button
                 key={link.href}
-                size="sm"
-                className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
                 onClick={() => scrollToSection(link.href)}
+                className="text-muted-foreground hover:text-foreground transition-colors font-medium text-sm"
               >
                 {link.label}
-              </Button>
+              </button>
             ))}
           </nav>
 
-          {/* Spacer for mobile to push menu button to the right */}
-          <div className="md:hidden" />
-
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden"
+            className="md:hidden text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? (
-              <X className={isScrolled ? "text-primary" : "text-white"} size={24} />
-            ) : (
-              <Menu className={isScrolled ? "text-primary" : "text-white"} size={24} />
-            )}
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden bg-background/95 backdrop-blur-sm rounded-lg shadow-lg mb-4 p-4">
+          <nav className="md:hidden bg-background border border-border rounded-lg shadow-lg mb-4 p-4">
             {navLinks.map((link) => (
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="block w-full text-left py-3 text-foreground font-medium hover:text-secondary transition-colors"
+                className="block w-full text-left py-3 text-foreground font-medium hover:text-primary transition-colors"
               >
                 {link.label}
               </button>
             ))}
-            <Button
-              className="w-full mt-3 bg-secondary text-secondary-foreground hover:bg-secondary/90"
-              onClick={() => scrollToSection("#contact")}
-            >
-              Свържи се
-            </Button>
           </nav>
         )}
       </div>

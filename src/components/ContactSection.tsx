@@ -1,5 +1,4 @@
-import { Phone, Mail, MapPin, Instagram } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 const ContactSection = () => {
   const contactInfo = [
@@ -21,58 +20,40 @@ const ContactSection = () => {
       value: "София, България",
       href: null,
     },
-    {
-      icon: Instagram,
-      label: "Instagram",
-      value: "@coach_football",
-      href: "https://instagram.com",
-    },
   ];
 
   return (
-    <section id="contact" className="py-20 bg-primary text-primary-foreground">
+    <section id="contact" className="py-24 lg:py-32 bg-muted">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-heading font-semibold text-foreground mb-6">
             Свържи се с мен
           </h2>
-          <div className="w-20 h-1 bg-secondary mx-auto mb-6" />
-          <p className="text-primary-foreground/80 max-w-2xl mx-auto">
-            Готов съм да отговоря на вашите въпроси и да обсъдим как мога 
-            да помогна на вашето дете да развие своите футболни умения
+          <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
+            Ако имате въпроси или искате да научите повече за моя подход, 
+            не се колебайте да се свържете с мен.
           </p>
-        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
-          {contactInfo.map((item, index) => (
-            <div key={index} className="text-center">
-              <div className="w-14 h-14 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <item.icon className="w-6 h-6 text-secondary" />
+          <div className="flex flex-col sm:flex-row justify-center gap-8 sm:gap-12">
+            {contactInfo.map((item, index) => (
+              <div key={index} className="text-center">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <item.icon className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="font-medium text-foreground mb-1">{item.label}</h3>
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {item.value}
+                  </a>
+                ) : (
+                  <p className="text-muted-foreground">{item.value}</p>
+                )}
               </div>
-              <h3 className="font-heading font-semibold mb-1">{item.label}</h3>
-              {item.href ? (
-                <a
-                  href={item.href}
-                  className="text-primary-foreground/80 hover:text-secondary transition-colors"
-                >
-                  {item.value}
-                </a>
-              ) : (
-                <p className="text-primary-foreground/80">{item.value}</p>
-              )}
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Button
-            size="lg"
-            variant="secondary"
-            className="font-semibold px-8"
-            onClick={() => window.location.href = "tel:+359888888888"}
-          >
-            Обади се сега
-          </Button>
+            ))}
+          </div>
         </div>
       </div>
     </section>
