@@ -1,16 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import { useEffect, useState } from "react";
 import heroBackground from "@/assets/hero-background.png";
 
 const HeroSection = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden">
-      {/* Background image with blur and desaturation */}
+      {/* Background image with parallax, blur and desaturation */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
         style={{
           backgroundImage: `url(${heroBackground})`,
           filter: 'blur(2px) saturate(0.95)',
+          transform: `translateY(${scrollY * 0.5}px) scale(1.1)`,
         }}
       />
       
@@ -28,8 +40,8 @@ const HeroSection = () => {
         }}
       />
       
-      <div className="container mx-auto px-16 md:px-20 py-24 md:py-28 relative z-10">
-        <div className="max-w-[600px] text-left md:text-left text-center">
+      <div className="container mx-auto px-12 md:px-16 lg:px-20 py-24 md:py-28 relative z-10">
+        <div className="max-w-[600px] text-center md:text-left">
           {/* Badge */}
           <div 
             className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-8 opacity-0 animate-fade-in"
@@ -71,9 +83,9 @@ const HeroSection = () => {
               Научи повече за моя подход
             </Button>
             <Button 
-              variant="outline"
+              variant="default"
               size="lg" 
-              className="font-medium px-8 py-6 text-base border-white/30 text-white hover:bg-white/10 hover:text-white"
+              className="font-medium px-8 py-6 text-base"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Свържи се с мен

@@ -43,7 +43,9 @@ const Header = () => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="font-heading font-semibold text-xl text-foreground"
+            className={`font-heading font-semibold text-xl transition-colors ${
+              isScrolled ? "text-foreground" : "text-white"
+            }`}
           >
             Треньор
           </a>
@@ -54,7 +56,11 @@ const Header = () => {
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="text-muted-foreground hover:text-foreground transition-colors font-medium text-sm"
+                className={`transition-colors font-medium text-sm ${
+                  isScrolled 
+                    ? "text-muted-foreground hover:text-foreground" 
+                    : "text-white/80 hover:text-white"
+                }`}
               >
                 {link.label}
               </button>
@@ -63,7 +69,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground"
+            className={`md:hidden transition-colors ${isScrolled ? "text-foreground" : "text-white"}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
