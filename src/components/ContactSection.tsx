@@ -3,34 +3,32 @@ import { Button } from "@/components/ui/button";
 import { HeroHighlight } from "@/components/ui/hero-highlight";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ContactSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
 
   const contactInfo = [
     {
       icon: Phone,
-      label: "Телефон",
+      label: t("contact.phone"),
       value: "+359 88 888 8888",
       href: "tel:+359888888888",
     },
     {
       icon: Mail,
-      label: "Имейл",
+      label: t("contact.email"),
       value: "coach@example.com",
       href: "mailto:coach@example.com",
     },
     {
       icon: MapPin,
-      label: "Локация",
-      value: "София, България",
+      label: t("contact.location"),
+      value: t("contact.location.value"),
       href: null,
     },
-  ];
-
-  const headerTexts = [
-    "Ако имате въпроси за мен, за тренировките или просто искате да разберете дали подходът ми е подходящ за вашето дете – пишете ми или се обадете. Няма ангажимент.",
   ];
 
   return (
@@ -40,30 +38,27 @@ const ContactSection = () => {
           <div className="max-w-3xl mx-auto">
             {/* Header */}
             <div className="text-center mb-12">
-              <p className="text-primary mb-3 uppercase tracking-wide text-sm">Контакт</p>
+              <p className="text-primary mb-3 uppercase tracking-wide text-sm">{t("contact.label")}</p>
               <h2 className="text-3xl md:text-4xl font-heading font-semibold text-foreground mb-6">
-                Нека поговорим
+                {t("contact.title")}
               </h2>
-              {headerTexts.map((text, index) => (
-                <motion.p
-                  key={index}
-                  className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto rounded-lg px-3 py-2"
-                  initial={{ backgroundSize: "0% 100%" }}
-                  animate={isInView ? { backgroundSize: "100% 100%" } : { backgroundSize: "0% 100%" }}
-                  transition={{ 
-                    duration: 1.2, 
-                    ease: "easeOut", 
-                    delay: 0.2 + index * 0.4 
-                  }}
-                  style={{
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "left center",
-                    backgroundImage: "linear-gradient(to right, hsl(var(--primary) / 0.08), hsl(var(--primary) / 0.12))",
-                  }}
-                >
-                  {text}
-                </motion.p>
-              ))}
+              <motion.p
+                className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto rounded-lg px-3 py-2"
+                initial={{ backgroundSize: "0% 100%" }}
+                animate={isInView ? { backgroundSize: "100% 100%" } : { backgroundSize: "0% 100%" }}
+                transition={{ 
+                  duration: 1.2, 
+                  ease: "easeOut", 
+                  delay: 0.2 
+                }}
+                style={{
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "left center",
+                  backgroundImage: "linear-gradient(to right, hsl(var(--primary) / 0.08), hsl(var(--primary) / 0.12))",
+                }}
+              >
+                {t("contact.intro")}
+              </motion.p>
             </div>
 
             {/* Contact cards */}
@@ -124,14 +119,14 @@ const ContactSection = () => {
                 }}
               >
                 <p className="text-muted-foreground mb-6">
-                  Предпочитате да пишете? Изпратете ми имейл и ще ви отговоря до 24 часа.
+                  {t("contact.prefer")}
                 </p>
                 <Button 
                   size="lg" 
                   className="px-8"
                   onClick={() => window.location.href = 'mailto:coach@example.com'}
                 >
-                  Изпратете имейл
+                  {t("contact.send")}
                 </Button>
               </motion.div>
             </motion.div>
@@ -147,7 +142,7 @@ const ContactSection = () => {
                 delay: 1.6 
               }}
             >
-              Очаквам с нетърпение да се запознаем!
+              {t("contact.closing")}
             </motion.p>
           </div>
         </div>

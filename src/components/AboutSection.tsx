@@ -2,16 +2,18 @@ import heroImage from "@/assets/hero-coach-new.jpg";
 import { HeroHighlight } from "@/components/ui/hero-highlight";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const AboutSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
 
   const paragraphs = [
-    "За мен футболът не е просто спорт, а начин децата да изградят увереност, характер и любов към движението.",
-    "Всяка тренировка е възможност детето да се почувства чуто, подкрепено и мотивирано да даде най-доброто от себе си – без напрежение и страх от грешки.",
-    "Работя с ясна структура, внимание към детайла и индивидуален подход към всяко дете.",
-    "Родителите могат да очакват спокойна, подкрепяща среда и открита комуникация, в която развитието на детето е на първо място.",
+    t("about.p1"),
+    t("about.p2"),
+    t("about.p3"),
+    t("about.p4"),
   ];
 
   return (
@@ -35,7 +37,7 @@ const AboutSection = () => {
             {/* Content */}
             <div className="order-1 lg:order-2" ref={ref}>
               <h2 className="text-3xl md:text-4xl font-heading font-semibold text-foreground mb-8">
-                За мен
+                {t("about.title")}
               </h2>
               
               <div className="space-y-5 text-lg leading-relaxed">
@@ -77,8 +79,7 @@ const AboutSection = () => {
                 }}
               >
                 <p className="text-foreground text-lg italic">
-                  "Когато едно дете се чувства разбрано и подкрепено, 
-                  то е способно на всичко."
+                  "{t("about.quote")}"
                 </p>
               </motion.blockquote>
             </div>

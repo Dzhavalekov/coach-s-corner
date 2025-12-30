@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,16 +17,20 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { label: "За мен", href: "#about" },
-    { label: "Философия", href: "#philosophy" },
-    { label: "Как работя", href: "#approach" },
-    { label: "Контакти", href: "#contact" },
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.philosophy"), href: "#philosophy" },
+    { label: t("nav.approach"), href: "#approach" },
+    { label: t("nav.contact"), href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: "smooth" });
     setIsMobileMenuOpen(false);
+  };
+
+  const toggleLanguage = () => {
+    setLanguage(language === "bg" ? "en" : "bg");
   };
 
   return (
@@ -68,15 +74,43 @@ const Header = () => {
                 {link.label}
               </button>
             ))}
+            
+            {/* Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all duration-200 font-medium text-sm ${
+                isScrolled 
+                  ? "border-border text-muted-foreground hover:text-foreground hover:border-foreground/50" 
+                  : "border-white/30 text-white/80 hover:text-white hover:border-white/60"
+              }`}
+            >
+              <Globe className="w-4 h-4" />
+              <span>{language === "bg" ? "EN" : "BG"}</span>
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
-          <button
-            className={`md:hidden transition-colors ${isScrolled ? "text-foreground" : "text-white"}`}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-3 md:hidden">
+            {/* Language Switcher Mobile */}
+            <button
+              onClick={toggleLanguage}
+              className={`flex items-center gap-1 px-2 py-1 rounded-full border transition-all duration-200 text-sm ${
+                isScrolled 
+                  ? "border-border text-muted-foreground" 
+                  : "border-white/30 text-white/80"
+              }`}
+            >
+              <Globe className="w-3.5 h-3.5" />
+              <span>{language === "bg" ? "EN" : "BG"}</span>
+            </button>
+            
+            <button
+              className={`transition-colors ${isScrolled ? "text-foreground" : "text-white"}`}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

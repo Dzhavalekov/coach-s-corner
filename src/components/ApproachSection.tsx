@@ -3,46 +3,44 @@ import { HeroHighlight } from "@/components/ui/hero-highlight";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import coachWithChildImage from "@/assets/coach-with-child.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ApproachSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
 
   const approaches = [
     {
       icon: Clock,
-      title: "Структура и ясност",
-      description: "Всяка тренировка има ясен план. Децата знаят какво се очаква от тях.",
+      title: t("approach.structure.title"),
+      description: t("approach.structure.desc"),
       points: [
-        "Загрявка, техника, игра",
-        "Последователност в правилата",
-        "Ясни инструкции",
+        t("approach.structure.p1"),
+        t("approach.structure.p2"),
+        t("approach.structure.p3"),
       ],
     },
     {
       icon: User,
-      title: "Индивидуално внимание",
-      description: "Всяко дете е различно и заслужава внимание, съобразено с неговите нужди.",
+      title: t("approach.individual.title"),
+      description: t("approach.individual.desc"),
       points: [
-        "Малки групи",
-        "Адаптирани задачи",
-        "Лична обратна връзка",
+        t("approach.individual.p1"),
+        t("approach.individual.p2"),
+        t("approach.individual.p3"),
       ],
     },
     {
       icon: MessageCircle,
-      title: "Комуникация с родителите",
-      description: "Вярвам в откритата комуникация. Винаги съм на разположение за въпроси.",
+      title: t("approach.communication.title"),
+      description: t("approach.communication.desc"),
       points: [
-        "Редовна обратна връзка",
-        "Достъпност за родителите",
-        "Споделяне на напредъка",
+        t("approach.communication.p1"),
+        t("approach.communication.p2"),
+        t("approach.communication.p3"),
       ],
     },
-  ];
-
-  const headerTexts = [
-    "Всеки детайл в моята работа е обмислен така, че децата да се чувстват сигурни, мотивирани и подкрепени.",
   ];
 
   return (
@@ -52,30 +50,27 @@ const ApproachSection = () => {
           <div className="max-w-6xl mx-auto">
             {/* Header */}
             <div className="max-w-3xl mx-auto text-center mb-16">
-              <p className="text-primary mb-3 uppercase tracking-wide text-sm">Подход</p>
+              <p className="text-primary mb-3 uppercase tracking-wide text-sm">{t("approach.label")}</p>
               <h2 className="text-3xl md:text-4xl font-heading font-semibold text-foreground mb-6">
-                Как работя с децата
+                {t("approach.title")}
               </h2>
-              {headerTexts.map((text, index) => (
-                <motion.p
-                  key={index}
-                  className="text-lg text-muted-foreground leading-relaxed rounded-lg px-3 py-2"
-                  initial={{ backgroundSize: "0% 100%" }}
-                  animate={isInView ? { backgroundSize: "100% 100%" } : { backgroundSize: "0% 100%" }}
-                  transition={{ 
-                    duration: 1.2, 
-                    ease: "easeOut", 
-                    delay: 0.2 + index * 0.4 
-                  }}
-                  style={{
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "left center",
-                    backgroundImage: "linear-gradient(to right, hsl(var(--primary) / 0.08), hsl(var(--primary) / 0.12))",
-                  }}
-                >
-                  {text}
-                </motion.p>
-              ))}
+              <motion.p
+                className="text-lg text-muted-foreground leading-relaxed rounded-lg px-3 py-2"
+                initial={{ backgroundSize: "0% 100%" }}
+                animate={isInView ? { backgroundSize: "100% 100%" } : { backgroundSize: "0% 100%" }}
+                transition={{ 
+                  duration: 1.2, 
+                  ease: "easeOut", 
+                  delay: 0.2 
+                }}
+                style={{
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "left center",
+                  backgroundImage: "linear-gradient(to right, hsl(var(--primary) / 0.08), hsl(var(--primary) / 0.12))",
+                }}
+              >
+                {t("approach.intro")}
+              </motion.p>
             </div>
 
             {/* Main layout: cards on left, image on right */}
