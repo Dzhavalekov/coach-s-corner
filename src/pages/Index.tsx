@@ -1,10 +1,19 @@
+import { lazy, Suspense } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import PhilosophySection from "@/components/PhilosophySection";
-import ApproachSection from "@/components/ApproachSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
+
+// Lazy load below-the-fold sections
+const AboutSection = lazy(() => import("@/components/AboutSection"));
+const PhilosophySection = lazy(() => import("@/components/PhilosophySection"));
+const ApproachSection = lazy(() => import("@/components/ApproachSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
+const Footer = lazy(() => import("@/components/Footer"));
+
+const SectionFallback = () => (
+  <div className="py-24 flex items-center justify-center">
+    <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+  </div>
+);
 
 const Index = () => {
   return (
@@ -12,12 +21,22 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <AboutSection />
-        <PhilosophySection />
-        <ApproachSection />
-        <ContactSection />
+        <Suspense fallback={<SectionFallback />}>
+          <AboutSection />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <PhilosophySection />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <ApproachSection />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <ContactSection />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={<SectionFallback />}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };
