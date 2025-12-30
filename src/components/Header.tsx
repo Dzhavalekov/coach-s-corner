@@ -64,7 +64,7 @@ const Header = memo(() => {
             <img 
               src={logo} 
               alt="Football Academy Logo" 
-              className="h-12 sm:h-16 md:h-20 w-auto"
+              className="h-12 sm:h-16 md:h-20 w-auto mix-blend-multiply dark:mix-blend-screen"
               loading="eager"
             />
           </a>
