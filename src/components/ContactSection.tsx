@@ -1,16 +1,12 @@
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { HeroHighlight } from "@/components/ui/hero-highlight";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { memo, useMemo, useCallback } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const ContactSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+const ContactSection = memo(() => {
   const { t } = useLanguage();
 
-  const contactInfo = [
+  const contactInfo = useMemo(() => [
     {
       icon: Phone,
       label: t("contact.phone"),
@@ -29,126 +25,77 @@ const ContactSection = () => {
       value: t("contact.location.value"),
       href: null,
     },
-  ];
+  ], [t]);
+
+  const handleEmailClick = useCallback(() => {
+    window.location.href = 'mailto:coach@example.com';
+  }, []);
 
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-background">
-      <HeroHighlight containerClassName="h-auto">
-        <div className="container mx-auto px-4" ref={ref}>
-          <div className="max-w-3xl mx-auto">
-            {/* Header */}
-            <div className="text-center mb-12">
-              <p className="text-primary mb-3 uppercase tracking-wide text-sm">{t("contact.label")}</p>
-              <h2 className="text-3xl md:text-4xl font-heading font-semibold text-foreground mb-6">
-                {t("contact.title")}
-              </h2>
-              <motion.p
-                className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto rounded-lg px-3 py-2"
-                initial={{ backgroundSize: "0% 100%" }}
-                animate={isInView ? { backgroundSize: "100% 100%" } : { backgroundSize: "0% 100%" }}
-                transition={{ 
-                  duration: 1.2, 
-                  ease: "easeOut", 
-                  delay: 0.2 
-                }}
-                style={{
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "left center",
-                  backgroundImage: "linear-gradient(to right, hsl(var(--primary) / 0.08), hsl(var(--primary) / 0.12))",
-                }}
-              >
-                {t("contact.intro")}
-              </motion.p>
-            </div>
-
-            {/* Contact cards */}
-            <motion.div 
-              className="bg-muted rounded-2xl p-8 md:p-12"
-              initial={{ backgroundSize: "0% 100%" }}
-              animate={isInView ? { backgroundSize: "100% 100%" } : { backgroundSize: "0% 100%" }}
-              transition={{ 
-                duration: 1.2, 
-                ease: "easeOut", 
-                delay: 0.6 
-              }}
-              style={{
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "left center",
-                backgroundImage: "linear-gradient(to right, hsl(var(--primary) / 0.05), hsl(var(--primary) / 0.08))",
-              }}
-            >
-              <div className="grid sm:grid-cols-3 gap-8">
-                {contactInfo.map((item, index) => (
-                  <motion.div 
-                    key={index} 
-                    className="text-center"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                    transition={{ 
-                      duration: 0.5, 
-                      ease: "easeOut", 
-                      delay: 0.8 + index * 0.2 
-                    }}
-                  >
-                    <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                      <item.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <h3 className="text-foreground mb-2">{item.label}</h3>
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                      >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p className="text-muted-foreground text-sm">{item.value}</p>
-                    )}
-                  </motion.div>
-                ))}
-              </div>
-              
-              <motion.div 
-                className="mt-10 pt-8 border-t border-border text-center"
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ 
-                  duration: 0.5, 
-                  ease: "easeOut", 
-                  delay: 1.4 
-                }}
-              >
-                <p className="text-muted-foreground mb-6">
-                  {t("contact.prefer")}
-                </p>
-                <Button 
-                  size="lg" 
-                  className="px-8"
-                  onClick={() => window.location.href = 'mailto:coach@example.com'}
-                >
-                  {t("contact.send")}
-                </Button>
-              </motion.div>
-            </motion.div>
-            
-            {/* Closing message */}
-            <motion.p 
-              className="text-center text-muted-foreground mt-10 text-sm"
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ 
-                duration: 0.5, 
-                ease: "easeOut", 
-                delay: 1.6 
-              }}
-            >
-              {t("contact.closing")}
-            </motion.p>
+    <section id="contact" className="py-16 sm:py-20 lg:py-28 bg-background">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-8 sm:mb-12">
+            <p className="text-primary mb-2 sm:mb-3 uppercase tracking-wide text-xs sm:text-sm">{t("contact.label")}</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold text-foreground mb-4 sm:mb-6">
+              {t("contact.title")}
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto">
+              {t("contact.intro")}
+            </p>
           </div>
+
+          {/* Contact cards */}
+          <div className="bg-muted rounded-2xl p-6 sm:p-8 md:p-12">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+              {contactInfo.map((item, index) => (
+                <div 
+                  key={index} 
+                  className="text-center"
+                >
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                    <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                  </div>
+                  <h3 className="text-foreground text-sm sm:text-base mb-1 sm:mb-2">{item.label}</h3>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      className="text-muted-foreground hover:text-primary transition-colors text-xs sm:text-sm"
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="text-muted-foreground text-xs sm:text-sm">{item.value}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+            
+            <div className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-border text-center">
+              <p className="text-muted-foreground text-sm sm:text-base mb-4 sm:mb-6">
+                {t("contact.prefer")}
+              </p>
+              <Button 
+                size="lg" 
+                className="px-6 sm:px-8"
+                onClick={handleEmailClick}
+              >
+                {t("contact.send")}
+              </Button>
+            </div>
+          </div>
+          
+          {/* Closing message */}
+          <p className="text-center text-muted-foreground mt-8 sm:mt-10 text-xs sm:text-sm">
+            {t("contact.closing")}
+          </p>
         </div>
-      </HeroHighlight>
+      </div>
     </section>
   );
-};
+});
+
+ContactSection.displayName = "ContactSection";
 
 export default ContactSection;
