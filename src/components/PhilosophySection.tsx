@@ -1,9 +1,11 @@
 import { Heart, Shield, Users, TrendingUp } from "lucide-react";
 import { memo, useMemo } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const PhilosophySection = memo(() => {
   const { t } = useLanguage();
+  const { ref, isInView } = useIntersectionObserver();
 
   const principles = useMemo(() => [
     {
@@ -30,7 +32,7 @@ const PhilosophySection = memo(() => {
 
   return (
     <section id="philosophy" className="py-16 sm:py-20 lg:py-28 bg-background">
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="container mx-auto px-4 sm:px-6" ref={ref as React.RefObject<HTMLDivElement>}>
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="max-w-3xl mb-10 sm:mb-16">
@@ -38,7 +40,9 @@ const PhilosophySection = memo(() => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold text-foreground mb-4 sm:mb-6">
               {t("philosophy.title")}
             </h2>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+            <p 
+              className={`text-base sm:text-lg text-muted-foreground leading-relaxed rounded-lg px-3 py-2 -mx-3 animate-highlight ${isInView ? 'in-view' : ''}`}
+            >
               {t("philosophy.intro")}
             </p>
           </div>
@@ -48,7 +52,8 @@ const PhilosophySection = memo(() => {
             {principles.map((principle, index) => (
               <div
                 key={index}
-                className="group p-5 sm:p-8 rounded-xl bg-muted/50 hover:bg-muted transition-colors duration-200"
+                className={`group p-5 sm:p-8 rounded-xl bg-muted/50 hover:bg-muted transition-colors duration-200 animate-highlight ${isInView ? 'in-view' : ''}`}
+                style={{ animationDelay: `${0.3 + index * 0.15}s` }}
               >
                 <div className="flex items-start gap-4 sm:gap-5">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 transition-colors">
@@ -68,7 +73,10 @@ const PhilosophySection = memo(() => {
           </div>
           
           {/* Bottom quote */}
-          <div className="mt-10 sm:mt-16 text-center bg-primary/5 rounded-lg p-4 sm:p-6">
+          <div 
+            className={`mt-10 sm:mt-16 text-center bg-primary/5 rounded-lg p-4 sm:p-6 animate-highlight ${isInView ? 'in-view' : ''}`}
+            style={{ animationDelay: '0.9s' }}
+          >
             <p className="text-base sm:text-lg text-muted-foreground italic max-w-2xl mx-auto">
               "{t("philosophy.quote")}"
             </p>

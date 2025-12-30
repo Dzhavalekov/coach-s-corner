@@ -1,9 +1,11 @@
 import heroImage from "@/assets/hero-coach-new.jpg";
 import { memo, useMemo } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const AboutSection = memo(() => {
   const { t } = useLanguage();
+  const { ref, isInView } = useIntersectionObserver();
 
   const paragraphs = useMemo(() => [
     t("about.p1"),
@@ -30,7 +32,7 @@ const AboutSection = memo(() => {
           </div>
           
           {/* Content */}
-          <div className="order-1 lg:order-2">
+          <div className="order-1 lg:order-2" ref={ref as React.RefObject<HTMLDivElement>}>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold text-foreground mb-6 sm:mb-8">
               {t("about.title")}
             </h2>
@@ -39,14 +41,18 @@ const AboutSection = memo(() => {
               {paragraphs.map((text, index) => (
                 <p
                   key={index}
-                  className="text-muted-foreground"
+                  className={`text-muted-foreground rounded-lg px-3 py-2 -mx-3 animate-highlight ${isInView ? 'in-view' : ''}`}
+                  style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   {text}
                 </p>
               ))}
             </div>
             
-            <blockquote className="mt-6 sm:mt-8 border-l-4 border-primary pl-4 sm:pl-6 py-2">
+            <blockquote 
+              className={`mt-6 sm:mt-8 border-l-4 border-primary pl-4 sm:pl-6 py-2 rounded-r-lg animate-highlight ${isInView ? 'in-view' : ''}`}
+              style={{ animationDelay: `${paragraphs.length * 0.2}s` }}
+            >
               <p className="text-foreground text-base sm:text-lg italic">
                 "{t("about.quote")}"
               </p>
