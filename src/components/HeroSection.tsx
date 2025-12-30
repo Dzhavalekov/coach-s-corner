@@ -50,17 +50,17 @@ const HeroSection = memo(() => {
         <div className="max-w-[600px] text-center md:text-left">
           {/* Main headline */}
           <h1 
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-semibold md:font-bold leading-[1.1] md:leading-[1.15] mb-4 sm:mb-6 opacity-0 animate-fade-in max-w-[520px] md:max-w-[600px]" 
-            style={{ color: '#FFFFFF', animationDelay: "0.1s", animationDuration: "0.3s", animationFillMode: "forwards" }}
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-semibold md:font-bold leading-[1.1] md:leading-[1.15] mb-4 sm:mb-6 opacity-0 animate-fade-in max-w-[520px] md:max-w-[600px] text-white" 
+            style={{ animationDelay: "0.1s", animationDuration: "0.3s", animationFillMode: "forwards" }}
           >
             {t("hero.title")}{" "}
-            <span className="text-primary">{t("hero.title.highlight")}</span> {t("hero.title.end")}
+            <span className="text-primary md:text-primary">{t("hero.title.highlight")}</span> {t("hero.title.end")}
           </h1>
           
           {/* Subheadline */}
           <p 
-            className="text-sm sm:text-base md:text-lg lg:text-xl max-w-[480px] md:max-w-[520px] mb-6 sm:mb-10 leading-[1.4] md:leading-[1.5] opacity-0 animate-fade-in" 
-            style={{ color: 'rgba(255, 255, 255, 0.85)', animationDelay: "0.2s", animationDuration: "0.3s", animationFillMode: "forwards" }}
+            className="text-sm sm:text-base md:text-lg lg:text-xl max-w-[480px] md:max-w-[520px] mb-6 sm:mb-10 leading-[1.4] md:leading-[1.5] opacity-0 animate-fade-in text-white/90" 
+            style={{ animationDelay: "0.2s", animationDuration: "0.3s", animationFillMode: "forwards" }}
           >
             {t("hero.subtitle")}
           </p>
