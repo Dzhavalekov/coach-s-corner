@@ -2,9 +2,11 @@ import { CheckCircle, Clock, User, MessageCircle } from "lucide-react";
 import { memo, useMemo } from "react";
 import coachWithChildImage from "@/assets/coach-with-child.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const ApproachSection = memo(() => {
   const { t } = useLanguage();
+  const { ref, isInView } = useIntersectionObserver();
 
   const approaches = useMemo(() => [
     {
@@ -41,7 +43,7 @@ const ApproachSection = memo(() => {
 
   return (
     <section id="approach" className="py-16 sm:py-20 lg:py-28 bg-muted">
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="container mx-auto px-4 sm:px-6" ref={ref as React.RefObject<HTMLDivElement>}>
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-16">
@@ -49,7 +51,9 @@ const ApproachSection = memo(() => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold text-foreground mb-4 sm:mb-6">
               {t("approach.title")}
             </h2>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+            <p 
+              className={`text-base sm:text-lg text-muted-foreground leading-relaxed rounded-lg px-3 py-2 animate-highlight ${isInView ? 'in-view' : ''}`}
+            >
               {t("approach.intro")}
             </p>
           </div>
@@ -61,7 +65,8 @@ const ApproachSection = memo(() => {
               {approaches.map((approach, index) => (
                 <div 
                   key={index} 
-                  className="bg-card p-4 sm:p-5 rounded-xl border border-border"
+                  className={`bg-card p-4 sm:p-5 rounded-xl border border-border animate-highlight ${isInView ? 'in-view' : ''}`}
+                  style={{ animationDelay: `${0.2 + index * 0.15}s` }}
                 >
                   <div className="flex items-center gap-3 mb-2 sm:mb-3">
                     <div className="w-7 h-7 sm:w-8 sm:h-8 bg-primary/10 rounded-lg flex items-center justify-center">

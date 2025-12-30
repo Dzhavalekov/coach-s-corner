@@ -2,9 +2,11 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { memo, useMemo, useCallback } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const ContactSection = memo(() => {
   const { t } = useLanguage();
+  const { ref, isInView } = useIntersectionObserver();
 
   const contactInfo = useMemo(() => [
     {
@@ -33,7 +35,7 @@ const ContactSection = memo(() => {
 
   return (
     <section id="contact" className="py-16 sm:py-20 lg:py-28 bg-background">
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="container mx-auto px-4 sm:px-6" ref={ref as React.RefObject<HTMLDivElement>}>
         <div className="max-w-3xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8 sm:mb-12">
@@ -41,13 +43,18 @@ const ContactSection = memo(() => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold text-foreground mb-4 sm:mb-6">
               {t("contact.title")}
             </h2>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto">
+            <p 
+              className={`text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto rounded-lg px-3 py-2 animate-highlight ${isInView ? 'in-view' : ''}`}
+            >
               {t("contact.intro")}
             </p>
           </div>
 
           {/* Contact cards */}
-          <div className="bg-muted rounded-2xl p-6 sm:p-8 md:p-12">
+          <div 
+            className={`bg-muted rounded-2xl p-6 sm:p-8 md:p-12 animate-highlight ${isInView ? 'in-view' : ''}`}
+            style={{ animationDelay: '0.3s' }}
+          >
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
               {contactInfo.map((item, index) => (
                 <div 
