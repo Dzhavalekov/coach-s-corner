@@ -2,9 +2,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import heroBackground from "@/assets/hero-background.png";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,8 +48,8 @@ const HeroSection = () => {
             className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-semibold md:font-bold leading-[1.1] md:leading-[1.15] mb-6 opacity-0 animate-fade-in max-w-[520px] md:max-w-[600px]" 
             style={{ color: '#FFFFFF', animationDelay: "0.15s", animationDuration: "0.4s", animationFillMode: "forwards" }}
           >
-            Помагам на децата да растат{" "}
-            <span className="text-primary">уверени</span> и щастливи чрез футбола
+            {t("hero.title")}{" "}
+            <span className="text-primary">{t("hero.title.highlight")}</span> {t("hero.title.end")}
           </h1>
           
           {/* Subheadline - explains how */}
@@ -55,8 +57,7 @@ const HeroSection = () => {
             className="text-base md:text-lg lg:text-xl max-w-[480px] md:max-w-[520px] mb-10 leading-[1.4] md:leading-[1.5] opacity-0 animate-fade-in" 
             style={{ color: 'rgba(255, 255, 255, 0.85)', animationDelay: "0.35s", animationDuration: "0.4s", animationFillMode: "forwards" }}
           >
-            Футболът е повече от игра – той учи децата на дисциплина, работа в екип 
-            и вяра в себе си, в сигурна и подкрепяща среда.
+            {t("hero.subtitle")}
           </p>
           
           {/* CTAs with hover animations */}
@@ -70,7 +71,7 @@ const HeroSection = () => {
               className="font-medium px-8 py-6 text-base transition-all duration-300 hover:scale-105 hover:brightness-110 hover:shadow-lg hover:shadow-primary/30"
               onClick={() => document.getElementById('philosophy')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Научи повече за моя подход
+              {t("hero.cta.learn")}
             </Button>
             <Button 
               variant="default"
@@ -78,7 +79,7 @@ const HeroSection = () => {
               className="font-medium px-8 py-6 text-base transition-all duration-300 hover:scale-105 hover:brightness-110 hover:shadow-lg hover:shadow-primary/30"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Свържи се с мен
+              {t("hero.cta.contact")}
             </Button>
           </div>
           
@@ -89,17 +90,17 @@ const HeroSection = () => {
           >
             <div className="text-center">
               <div className="text-2xl font-heading font-semibold text-white">5+</div>
-              <div className="text-sm text-white/70">години опит</div>
+              <div className="text-sm text-white/70">{t("hero.years")}</div>
             </div>
             <div className="w-px h-10 bg-white/30 hidden sm:block" />
             <div className="text-center">
               <div className="text-2xl font-heading font-semibold text-white">UEFA C</div>
-              <div className="text-sm text-white/70">лиценз</div>
+              <div className="text-sm text-white/70">{t("hero.license")}</div>
             </div>
             <div className="w-px h-10 bg-white/30 hidden sm:block" />
             <div className="text-center">
               <div className="text-2xl font-heading font-semibold text-white">5-14</div>
-              <div className="text-sm text-white/70">години възраст</div>
+              <div className="text-sm text-white/70">{t("hero.age")}</div>
             </div>
           </div>
         </div>
@@ -111,7 +112,7 @@ const HeroSection = () => {
           onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
           className="flex flex-col items-center text-white/70 hover:text-primary transition-colors"
         >
-          <span className="text-sm mb-2">Разгледай</span>
+          <span className="text-sm mb-2">{t("hero.scroll")}</span>
           <ArrowDown className="w-5 h-5 animate-bounce" />
         </button>
       </div>

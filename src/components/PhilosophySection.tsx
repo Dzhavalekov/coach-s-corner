@@ -2,36 +2,34 @@ import { Heart, Shield, Users, TrendingUp } from "lucide-react";
 import { HeroHighlight } from "@/components/ui/hero-highlight";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const PhilosophySection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
 
   const principles = [
     {
       icon: Heart,
-      title: "Развитие, не резултати",
-      description: "Фокусирам се върху процеса на учене и личния напредък на всяко дете, а не върху победи и загуби.",
+      title: t("philosophy.development.title"),
+      description: t("philosophy.development.desc"),
     },
     {
       icon: Shield,
-      title: "Увереност и самочувствие",
-      description: "Създавам среда, в която децата не се страхуват да грешат. Грешките са част от ученето.",
+      title: t("philosophy.confidence.title"),
+      description: t("philosophy.confidence.desc"),
     },
     {
       icon: Users,
-      title: "Екипност и уважение",
-      description: "Учим се да ценим другите, да работим заедно и да подкрепяме съотборниците си.",
+      title: t("philosophy.teamwork.title"),
+      description: t("philosophy.teamwork.desc"),
     },
     {
       icon: TrendingUp,
-      title: "Дългосрочно мислене",
-      description: "Изграждам солидни основи, които ще позволят на децата да се развиват устойчиво с годините.",
+      title: t("philosophy.longterm.title"),
+      description: t("philosophy.longterm.desc"),
     },
-  ];
-
-  const headerTexts = [
-    "Вярвам, че ролята на треньора не е да създава шампиони, а да създава условия, в които децата могат да растат – не само като футболисти, но и като личности.",
   ];
 
   return (
@@ -41,30 +39,27 @@ const PhilosophySection = () => {
           <div className="max-w-6xl mx-auto">
             {/* Header */}
             <div className="max-w-3xl mb-16">
-              <p className="text-primary mb-3 uppercase tracking-wide text-sm">Философия</p>
+              <p className="text-primary mb-3 uppercase tracking-wide text-sm">{t("philosophy.label")}</p>
               <h2 className="text-3xl md:text-4xl font-heading font-semibold text-foreground mb-6">
-                Какво е важно за мен като треньор
+                {t("philosophy.title")}
               </h2>
-              {headerTexts.map((text, index) => (
-                <motion.p
-                  key={index}
-                  className="text-lg text-muted-foreground leading-relaxed rounded-lg px-3 py-2 -mx-3"
-                  initial={{ backgroundSize: "0% 100%" }}
-                  animate={isInView ? { backgroundSize: "100% 100%" } : { backgroundSize: "0% 100%" }}
-                  transition={{ 
-                    duration: 1.2, 
-                    ease: "easeOut", 
-                    delay: 0.2 + index * 0.4 
-                  }}
-                  style={{
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "left center",
-                    backgroundImage: "linear-gradient(to right, hsl(var(--primary) / 0.08), hsl(var(--primary) / 0.12))",
-                  }}
-                >
-                  {text}
-                </motion.p>
-              ))}
+              <motion.p
+                className="text-lg text-muted-foreground leading-relaxed rounded-lg px-3 py-2 -mx-3"
+                initial={{ backgroundSize: "0% 100%" }}
+                animate={isInView ? { backgroundSize: "100% 100%" } : { backgroundSize: "0% 100%" }}
+                transition={{ 
+                  duration: 1.2, 
+                  ease: "easeOut", 
+                  delay: 0.2 
+                }}
+                style={{
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "left center",
+                  backgroundImage: "linear-gradient(to right, hsl(var(--primary) / 0.08), hsl(var(--primary) / 0.12))",
+                }}
+              >
+                {t("philosophy.intro")}
+              </motion.p>
             </div>
 
             {/* Principles grid */}
@@ -122,7 +117,7 @@ const PhilosophySection = () => {
               }}
             >
               <p className="text-lg text-muted-foreground italic max-w-2xl mx-auto">
-                "Успехът се измерва не с трофеи, а с това колко детето е израснало като играч и като човек."
+                "{t("philosophy.quote")}"
               </p>
             </motion.div>
           </div>
