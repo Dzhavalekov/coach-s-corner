@@ -3,6 +3,7 @@ import { memo, useMemo } from "react";
 import coachWithChildImage from "@/assets/coach-with-child.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import SectionHeader from "@/components/SectionHeader";
 
 const ApproachSection = memo(() => {
   const { t } = useLanguage();
@@ -46,17 +47,13 @@ const ApproachSection = memo(() => {
       <div className="container mx-auto px-4 sm:px-6" ref={ref as React.RefObject<HTMLDivElement>}>
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-16">
-            <p className="text-primary mb-2 sm:mb-3 uppercase tracking-wide text-xs sm:text-sm">{t("approach.label")}</p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold text-foreground mb-4 sm:mb-6">
-              {t("approach.title")}
-            </h2>
-            <p 
-              className={`text-base sm:text-lg text-muted-foreground leading-relaxed rounded-lg px-3 py-2 animate-highlight ${isInView ? 'in-view' : ''}`}
-            >
-              {t("approach.intro")}
-            </p>
-          </div>
+          <SectionHeader
+            label={t("approach.label")}
+            title={t("approach.title")}
+            intro={t("approach.intro")}
+            introClassName={`rounded-lg px-3 py-2 animate-highlight ${isInView ? 'in-view' : ''}`}
+            centered
+          />
 
           {/* Main layout: cards on left, image on right */}
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 items-stretch">
