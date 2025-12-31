@@ -3,6 +3,7 @@ import { ArrowDown } from "lucide-react";
 import { useEffect, useState, useMemo, useCallback, memo } from "react";
 import heroBackground from "@/assets/hero-background.png";
 import { useLanguage } from "@/contexts/LanguageContext";
+import TrustIndicators from "@/components/TrustIndicators";
 
 const HeroSection = memo(() => {
   const [scrollY, setScrollY] = useState(0);
@@ -89,25 +90,7 @@ const HeroSection = memo(() => {
           </div>
           
           {/* Trust indicators */}
-          <div 
-            className="flex flex-wrap items-center justify-center md:justify-start gap-4 sm:gap-6 mt-8 sm:mt-12 pt-8 sm:pt-12 border-t border-white/20 opacity-0 animate-fade-in"
-            style={{ animationDelay: "0.35s", animationDuration: "0.3s", animationFillMode: "forwards" }}
-          >
-            <div className="text-center">
-              <div className="text-xl sm:text-2xl font-heading font-semibold text-white">5+</div>
-              <div className="text-xs sm:text-sm text-white/70">{t("hero.years")}</div>
-            </div>
-            <div className="w-px h-8 sm:h-10 bg-white/30 hidden sm:block" />
-            <div className="text-center">
-              <div className="text-xl sm:text-2xl font-heading font-semibold text-white">UEFA C</div>
-              <div className="text-xs sm:text-sm text-white/70">{t("hero.license")}</div>
-            </div>
-            <div className="w-px h-8 sm:h-10 bg-white/30 hidden sm:block" />
-            <div className="text-center">
-              <div className="text-xl sm:text-2xl font-heading font-semibold text-white">5-14</div>
-              <div className="text-xs sm:text-sm text-white/70">{t("hero.age")}</div>
-            </div>
-          </div>
+          <TrustIndicators />
         </div>
       </div>
       

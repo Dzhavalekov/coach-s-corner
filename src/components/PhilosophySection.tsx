@@ -2,6 +2,7 @@ import { Heart, Shield, Users, TrendingUp } from "lucide-react";
 import { memo, useMemo } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import SectionHeader from "@/components/SectionHeader";
 
 const PhilosophySection = memo(() => {
   const { t } = useLanguage();
@@ -35,17 +36,12 @@ const PhilosophySection = memo(() => {
       <div className="container mx-auto px-4 sm:px-6" ref={ref as React.RefObject<HTMLDivElement>}>
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="max-w-3xl mb-10 sm:mb-16">
-            <p className="text-primary mb-2 sm:mb-3 uppercase tracking-wide text-xs sm:text-sm">{t("philosophy.label")}</p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold text-foreground mb-4 sm:mb-6">
-              {t("philosophy.title")}
-            </h2>
-            <p 
-              className={`text-base sm:text-lg text-muted-foreground leading-relaxed rounded-lg px-3 py-2 -mx-3 animate-highlight ${isInView ? 'in-view' : ''}`}
-            >
-              {t("philosophy.intro")}
-            </p>
-          </div>
+          <SectionHeader
+            label={t("philosophy.label")}
+            title={t("philosophy.title")}
+            intro={t("philosophy.intro")}
+            introClassName={`rounded-lg px-3 py-2 -mx-3 animate-highlight ${isInView ? 'in-view' : ''}`}
+          />
 
           {/* Principles grid */}
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
