@@ -1,4 +1,4 @@
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-transparent.png";
 import { memo } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -11,7 +11,7 @@ const Footer = memo(() => {
         <img 
           src={logo} 
           alt="Football Academy Logo" 
-          className="h-16 sm:h-20 md:h-24 w-auto mix-blend-multiply dark:mix-blend-screen dark:invert"
+          className="h-16 sm:h-20 md:h-24 w-auto"
           loading="lazy"
         />
         <p className="text-muted-foreground text-xs sm:text-sm text-center">
