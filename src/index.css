@@ -138,15 +138,71 @@ html {
 
 .animate-highlight.in-view {
   animation: highlight-text 1s ease-out forwards;
-}/* Make hero section text fully white (add this at the end of src/index.css) */
-#hero,
-.hero,
-#hero *,
-.hero * {
-  color: #ffffff !important;
-  /* за SVG текст/икони */
-  fill: #ffffff !important;
-  stroke: #ffffff !important;
-  /* ако има фон, няма да го променя, но премахва ненужни белезникави фонове */
-  background-color: transparent !important;
+}
+
+/* Hero section overlay */
+.hero__overlay {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.2) 70%, transparent 100%);
+}
+
+/* Button styles */
+.btn--primary {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%);
+  color: white;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn--primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.btn--primary:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+.btn--secondary {
+  background: transparent;
+  color: white;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn--secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn--secondary:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Staggered fade-up animation */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
 }

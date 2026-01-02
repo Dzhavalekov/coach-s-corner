@@ -9,6 +9,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Контакти",
     
     // Hero
+    "hero.eyebrow": "Футболен треньор UEFA C",
     "hero.title": "Помагам на децата да растат",
     "hero.title.highlight": "уверени",
     "hero.title.end": "и щастливи чрез футбола",
@@ -85,6 +86,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Contact",
     
     // Hero
+    "hero.eyebrow": "UEFA C Football Coach",
     "hero.title": "Helping children grow",
     "hero.title.highlight": "confident",
     "hero.title.end": "and happy through football",
