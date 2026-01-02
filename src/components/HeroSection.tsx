@@ -76,15 +76,10 @@ const HeroSection = memo(() => {
     transition={{ duration: 0.45, delay: 0.1 }}
     whileHover={{ scale: 1.04 }}
     whileTap={{ scale: 0.98 }}
-    className="group relative overflow-hidden rounded-2xl px-8 py-3 sm:py-4 text-base font-semibold text-white shadow-lg"
-    style={{ background: "linear-gradient(90deg,#d97312,#f7b66b)" }}
+    className="relative rounded-2xl px-8 py-3 sm:py-4 text-base font-semibold text-white shadow-md border border-white/20 bg-white/5 backdrop-blur-sm"
     aria-label={t("hero.cta.learn")}
   >
-    <span className="relative z-10">{t("hero.cta.learn")}</span>
-    <span
-      className="absolute -left-24 top-0 h-full w-24 bg-white/10 transform -skew-x-12 transition-transform duration-700 group-hover:translate-x-[220%]"
-      aria-hidden
-    />
+    {t("hero.cta.learn")}
   </motion.button>
 
   <motion.button
