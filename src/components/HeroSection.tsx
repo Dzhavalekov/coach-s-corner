@@ -67,27 +67,39 @@ const HeroSection = memo(() => {
           </p>
           
           {/* CTAs */}
-          <div 
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start opacity-0 animate-fade-in"
-            style={{ animationDelay: "0.25s", animationDuration: "0.3s", animationFillMode: "forwards" }}
-          >
-            {/* CTAs */}
-<div 
-  className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start opacity-0 animate-fade-in"
-  style={{ animationDelay: "0.25s", animationDuration: "0.3s", animationFillMode: "forwards" }}
->
-  <Button 
-    variant="default"
-    size="lg" 
-    className="font-medium px-6 sm:px-8 py-3 sm:py-3 text-sm sm:text-base transition-transform duration-200 transform hover:scale-105 rounded-xl bg-gradient-to-r from-orange-600 to-orange-300 text-white shadow-md"
+         {/* CTAs: animated boxed CTAs using Framer Motion */}
+<div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+  <motion.button
     onClick={() => scrollToSection('philosophy')}
+    initial={{ opacity: 0, y: 12 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.45, delay: 0.1 }}
+    whileHover={{ scale: 1.04 }}
+    whileTap={{ scale: 0.98 }}
+    className="group relative overflow-hidden rounded-2xl px-8 py-3 sm:py-4 text-base font-semibold text-white shadow-lg"
+    style={{ background: "linear-gradient(90deg,#d97312,#f7b66b)" }}
+    aria-label={t("hero.cta.learn")}
   >
-    {t("hero.cta.learn")} ⚡
-  </Button>
+    <span className="relative z-10">{t("hero.cta.learn")}</span>
+    <span
+      className="absolute -left-24 top-0 h-full w-24 bg-white/10 transform -skew-x-12 transition-transform duration-700 group-hover:translate-x-[220%]"
+      aria-hidden
+    />
+  </motion.button>
 
-  <Button 
-    variant="default"
-    size="lg" 
+  <motion.button
+    onClick={() => scrollToSection('contact')}
+    initial={{ opacity: 0, y: 12 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.45, delay: 0.22 }}
+    whileHover={{ scale: 1.04 }}
+    whileTap={{ scale: 0.98 }}
+    className="relative rounded-2xl px-8 py-3 sm:py-4 text-base font-semibold text-white shadow-md border border-white/20 bg-white/5 backdrop-blur-sm"
+    aria-label={t("hero.cta.contact")}
+  >
+    {t("hero.cta.contact")}
+  </motion.button>
+</div>
     className="font-medium px-6 sm:px-8 py-3 sm:py-3 text-sm sm:text-base transition-transform duration-200 transform hover:scale-105 rounded-xl bg-gradient-to-r from-orange-500 to-orange-300 text-white shadow-md"
     onClick={() => scrollToSection('contact')}
   >
