@@ -138,4 +138,15 @@ html {
 
 .animate-highlight.in-view {
   animation: highlight-text 1s ease-out forwards;
+}/* Make hero section text fully white (add this at the end of src/index.css) */
+#hero,
+.hero,
+#hero *,
+.hero * {
+  color: #ffffff !important;
+  /* за SVG текст/икони */
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+  /* ако има фон, няма да го променя, но премахва ненужни белезникави фонове */
+  background-color: transparent !important;
 }
