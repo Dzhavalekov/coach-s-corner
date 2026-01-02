@@ -20,6 +20,9 @@ export const translations: Record<Language, Record<string, string>> = {
     "hero.license": "лиценз",
     "hero.age": "години възраст",
     "hero.scroll": "Разгледай",
+    "hero.bullet.license": "UEFA C",
+    "hero.bullet.age": "Възраст 5–14",
+    "hero.bullet.plan": "Индивидуален план",
     
     // About
     "about.title": "За мен",
@@ -97,6 +100,9 @@ export const translations: Record<Language, Record<string, string>> = {
     "hero.license": "license",
     "hero.age": "years age range",
     "hero.scroll": "Explore",
+    "hero.bullet.license": "UEFA C",
+    "hero.bullet.age": "Age 5–14",
+    "hero.bullet.plan": "Individual plan",
     
     // About
     "about.title": "About Me",

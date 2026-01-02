@@ -92,15 +92,15 @@ const HeroSection = memo(() => {
             className="flex flex-wrap gap-3 sm:gap-4 mb-8 justify-center md:justify-start"
           >
             {[
-              { text: "UEFA C", key: "uefa" },
-              { text: "Възраст 5–14", key: "age" },
-              { text: "Индивидуален план", key: "plan" }
+              { labelKey: "hero.bullet.license", key: "uefa" },
+              { labelKey: "hero.bullet.age", key: "age" },
+              { labelKey: "hero.bullet.plan", key: "plan" }
             ].map((bullet) => (
               <div key={bullet.key} className="flex items-center gap-2 text-white/90">
                 <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
                   <Check className="w-3 h-3 text-primary" strokeWidth={3} />
                 </div>
-                <span className="text-sm font-medium">{bullet.text}</span>
+                <span className="text-sm font-medium">{t(bullet.labelKey)}</span>
               </div>
             ))}
           </motion.div>
