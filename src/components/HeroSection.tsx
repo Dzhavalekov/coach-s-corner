@@ -1,4 +1,4 @@
-import { ArrowDown, Lightbulb, Mail, Check } from "lucide-react";
+import { ArrowDown, Lightbulb, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useState, useMemo, useCallback, memo } from "react";
 import heroBackground from "@/assets/hero-background.png";
@@ -18,12 +18,6 @@ const fadeUpVariant = {
     },
   }),
 };
-
-const trustBullets = [
-  { key: "hero.bullet.license" },
-  { key: "hero.bullet.age" },
-  { key: "hero.bullet.plan" },
-];
 
 const HeroSection = memo(() => {
   const [scrollY, setScrollY] = useState(0);
@@ -99,20 +93,10 @@ const HeroSection = memo(() => {
       
       <div className="container mx-auto px-6 sm:px-12 md:px-16 lg:px-20 py-20 md:py-28 relative z-10">
         <div className="max-w-[600px] text-center md:text-left">
-          
-          {/* Eyebrow label */}
-          <motion.div
-            {...getAnimationProps(0)}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 backdrop-blur-sm mb-6"
-          >
-            <span className="text-xs sm:text-sm font-medium text-primary tracking-wide uppercase">
-              {t("hero.eyebrow")}
-            </span>
-          </motion.div>
 
           {/* Main headline with text shadow */}
           <motion.h1
-            {...getAnimationProps(0.12)}
+            {...getAnimationProps(0)}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-semibold md:font-bold leading-[1.15] md:leading-[1.2] mb-5 sm:mb-6 max-w-[520px] md:max-w-[600px] text-white"
             style={{ textShadow: "0 2px 20px rgba(0,0,0,0.5)" }}
           >
@@ -125,32 +109,12 @@ const HeroSection = memo(() => {
           
           {/* Subheadline with text shadow */}
           <motion.p
-            {...getAnimationProps(0.24)}
-            className="text-sm sm:text-base md:text-lg lg:text-xl max-w-[480px] md:max-w-[520px] mb-6 sm:mb-8 leading-[1.5] md:leading-[1.6] text-white/90"
+            {...getAnimationProps(0.12)}
+            className="text-sm sm:text-base md:text-lg lg:text-xl max-w-[480px] md:max-w-[520px] mb-8 sm:mb-10 leading-[1.5] md:leading-[1.6] text-white/90"
             style={{ textShadow: "0 1px 10px rgba(0,0,0,0.4)" }}
           >
             {t("hero.subtitle")}
           </motion.p>
-
-          {/* Trust bullets */}
-          <motion.div
-            {...getAnimationProps(0.36)}
-            className="flex flex-wrap gap-3 sm:gap-4 mb-8 sm:mb-10 justify-center md:justify-start"
-          >
-            {trustBullets.map((bullet) => (
-              <div
-                key={bullet.key}
-                className="flex items-center gap-2 text-white/90"
-              >
-                <div className="flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 border border-primary/40">
-                  <Check className="w-3 h-3 text-primary" />
-                </div>
-                <span className="text-sm sm:text-base font-medium">
-                  {t(bullet.key)}
-                </span>
-              </div>
-            ))}
-          </motion.div>
           
           {/* CTAs: Primary (solid) and Secondary (outline) */}
           <motion.div
