@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import { motion } from "framer-motion";
 import { useEffect, useState, useMemo, useCallback, memo } from "react";
 import heroBackground from "@/assets/hero-background.png";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -100,13 +100,6 @@ const HeroSection = memo(() => {
     {t("hero.cta.contact")}
   </motion.button>
 </div>
-    className="font-medium px-6 sm:px-8 py-3 sm:py-3 text-sm sm:text-base transition-transform duration-200 transform hover:scale-105 rounded-xl bg-gradient-to-r from-orange-500 to-orange-300 text-white shadow-md"
-    onClick={() => scrollToSection('contact')}
-  >
-    {t("hero.cta.contact")}
-  </Button>
-</div>
-          </div>
           
           {/* Trust indicators */}
           <TrustIndicators />
