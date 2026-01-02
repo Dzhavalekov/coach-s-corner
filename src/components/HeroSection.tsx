@@ -57,7 +57,7 @@ const HeroSection = memo(() => {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-[1.1] md:leading-[1.12] mb-5 sm:mb-7 max-w-[520px] md:max-w-[650px] text-white drop-shadow-lg"
           >
             {t("hero.title")}{" "}
-            <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">{t("hero.title.highlight")}</span> {t("hero.title.end")}
+            <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">{t("hero.title.highlight")}</span> {t("hero.title.end")}
           </motion.h1>
           
           {/* Subheadline with improved readability */}
@@ -71,15 +71,15 @@ const HeroSection = memo(() => {
           </motion.p>
           
           {/* Enhanced CTAs with primary/secondary styling */}
-<div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-8">
+<div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
   <motion.button
     onClick={() => scrollToSection('philosophy')}
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay: 0.4 }}
-    whileHover={{ scale: 1.05, boxShadow: "0 10px 40px rgba(59, 130, 246, 0.3)" }}
+    whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.98 }}
-    className="relative rounded-xl px-8 py-4 text-base sm:text-lg font-semibold text-white shadow-lg bg-primary hover:bg-primary/90 transition-colors flex items-center justify-center gap-2.5"
+    className="relative rounded-xl px-8 py-4 text-base sm:text-lg font-semibold text-white shadow-lg shadow-primary/30 hover:shadow-primary/50 bg-primary hover:bg-primary/90 transition-all flex items-center justify-center gap-2.5"
     aria-label={t("hero.cta.learn")}
   >
     <Lightbulb className="w-5 h-5" />
@@ -91,9 +91,9 @@ const HeroSection = memo(() => {
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay: 0.5 }}
-    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
+    whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.98 }}
-    className="relative rounded-xl px-8 py-4 text-base sm:text-lg font-semibold text-white shadow-lg border-2 border-white/30 bg-white/10 backdrop-blur-sm hover:border-white/50 transition-all flex items-center justify-center gap-2.5"
+    className="relative rounded-xl px-8 py-4 text-base sm:text-lg font-semibold text-white shadow-lg border-2 border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/15 hover:border-white/50 transition-all flex items-center justify-center gap-2.5"
     aria-label={t("hero.cta.contact")}
   >
     <Mail className="w-5 h-5" />
