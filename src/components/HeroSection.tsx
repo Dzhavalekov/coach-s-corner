@@ -35,7 +35,7 @@ const HeroSection = memo(() => {
   }), [scrollY]);
 
   return (
-    <section className="relative min-h-[100svh] flex items-center overflow-hidden">
+    <section id="hero" className="relative min-h-[100svh] flex items-center overflow-hidden">
       {/* Background image with optimized parallax */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
