@@ -9,12 +9,16 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Контакти",
     
     // Hero
+    "hero.eyebrow": "Индивидуални тренировки за деца 5–14",
     "hero.title": "Помагам на децата да растат",
     "hero.title.highlight": "уверени",
     "hero.title.end": "и щастливи чрез футбола",
     "hero.subtitle": "Футболът е повече от игра – той учи децата на дисциплина, работа в екип и вяра в себе си, в сигурна и подкрепяща среда.",
     "hero.cta.learn": "Научи повече за моя подход",
     "hero.cta.contact": "Свържи се с мен",
+    "hero.bullet.license": "UEFA C лиценз",
+    "hero.bullet.age": "Възраст 5–14",
+    "hero.bullet.plan": "Индивидуален план",
     "hero.years": "години опит",
     "hero.license": "лиценз",
     "hero.age": "години възраст",
@@ -85,12 +89,16 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Contact",
     
     // Hero
+    "hero.eyebrow": "Individual training for children 5–14",
     "hero.title": "Helping children grow",
     "hero.title.highlight": "confident",
     "hero.title.end": "and happy through football",
     "hero.subtitle": "Football is more than a game – it teaches children discipline, teamwork, and self-belief in a safe and supportive environment.",
     "hero.cta.learn": "Learn more about my approach",
     "hero.cta.contact": "Get in touch",
+    "hero.bullet.license": "UEFA C license",
+    "hero.bullet.age": "Ages 5–14",
+    "hero.bullet.plan": "Personalized plan",
     "hero.years": "years experience",
     "hero.license": "license",
     "hero.age": "years age range",
