@@ -42,41 +42,44 @@ const HeroSection = memo(() => {
         style={parallaxStyle}
       />
       
-      {/* Combined overlay for better performance */}
+      {/* Enhanced overlay for better readability */}
       <div 
-        className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/25 to-black/10"
+        className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"
       />
       
       <div className="container mx-auto px-6 sm:px-12 md:px-16 lg:px-20 py-20 md:py-28 relative z-10">
         <div className="max-w-[600px] text-center md:text-left">
-          {/* Main headline */}
-          <h1 
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-semibold md:font-bold leading-[1.1] md:leading-[1.15] mb-4 sm:mb-6 opacity-0 animate-fade-in max-w-[520px] md:max-w-[600px] text-white" 
-            style={{ animationDelay: "0.1s", animationDuration: "0.3s", animationFillMode: "forwards" }}
+          {/* Main headline with improved hierarchy */}
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-[1.1] md:leading-[1.12] mb-5 sm:mb-7 max-w-[520px] md:max-w-[650px] text-white drop-shadow-lg"
           >
             {t("hero.title")}{" "}
-            <span className="text-primary md:text-primary">{t("hero.title.highlight")}</span> {t("hero.title.end")}
-          </h1>
+            <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">{t("hero.title.highlight")}</span> {t("hero.title.end")}
+          </motion.h1>
           
-          {/* Subheadline */}
-          <p 
-            className="text-sm sm:text-base md:text-lg lg:text-xl max-w-[480px] md:max-w-[520px] mb-6 sm:mb-10 leading-[1.4] md:leading-[1.5] opacity-0 animate-fade-in text-white/90" 
-            style={{ animationDelay: "0.2s", animationDuration: "0.3s", animationFillMode: "forwards" }}
+          {/* Subheadline with improved readability */}
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-[480px] md:max-w-[560px] mb-8 sm:mb-12 leading-[1.5] md:leading-[1.6] text-white/95 drop-shadow-md font-light"
           >
             {t("hero.subtitle")}
-          </p>
+          </motion.p>
           
-          {/* CTAs */}
-         {/* CTAs: animated boxed CTAs using Framer Motion */}
+          {/* Enhanced CTAs with primary/secondary styling */}
 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
   <motion.button
     onClick={() => scrollToSection('philosophy')}
-    initial={{ opacity: 0, y: 12 }}
+    initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.45, delay: 0.1 }}
-    whileHover={{ scale: 1.04 }}
+    transition={{ duration: 0.6, delay: 0.4 }}
+    whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.98 }}
-    className="relative rounded-2xl px-8 py-3 sm:py-4 text-base font-semibold text-white shadow-md border border-white/20 bg-white/5 backdrop-blur-sm flex items-center gap-2"
+    className="relative rounded-xl px-8 py-4 text-base sm:text-lg font-semibold text-white shadow-lg shadow-primary/30 hover:shadow-primary/50 bg-primary hover:bg-primary/90 transition-all flex items-center justify-center gap-2.5"
     aria-label={t("hero.cta.learn")}
   >
     <Lightbulb className="w-5 h-5" />
@@ -85,12 +88,12 @@ const HeroSection = memo(() => {
 
   <motion.button
     onClick={() => scrollToSection('contact')}
-    initial={{ opacity: 0, y: 12 }}
+    initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.45, delay: 0.22 }}
-    whileHover={{ scale: 1.04 }}
+    transition={{ duration: 0.6, delay: 0.5 }}
+    whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.98 }}
-    className="relative rounded-2xl px-8 py-3 sm:py-4 text-base font-semibold text-white shadow-md border border-white/20 bg-white/5 backdrop-blur-sm flex items-center gap-2"
+    className="relative rounded-xl px-8 py-4 text-base sm:text-lg font-semibold text-white shadow-lg border-2 border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/15 hover:border-white/50 transition-all flex items-center justify-center gap-2.5"
     aria-label={t("hero.cta.contact")}
   >
     <Mail className="w-5 h-5" />
@@ -103,16 +106,21 @@ const HeroSection = memo(() => {
         </div>
       </div>
       
-      {/* Scroll indicator */}
-      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in z-10" style={{ animationDelay: "0.5s", animationDuration: "0.3s", animationFillMode: "forwards" }}>
+      {/* Scroll indicator with smooth animation */}
+      <motion.div 
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10"
+      >
         <button 
           onClick={() => scrollToSection('about')}
-          className="flex flex-col items-center text-white/70 hover:text-primary transition-colors"
+          className="flex flex-col items-center text-white/80 hover:text-white transition-colors group"
         >
-          <span className="text-xs sm:text-sm mb-2">{t("hero.scroll")}</span>
-          <ArrowDown className="w-4 h-4 sm:w-5 sm:h-5 animate-bounce" />
+          <span className="text-xs sm:text-sm mb-2 font-medium">{t("hero.scroll")}</span>
+          <ArrowDown className="w-4 h-4 sm:w-5 sm:h-5 animate-bounce group-hover:text-primary transition-colors" />
         </button>
-      </div>
+      </motion.div>
     </section>
   );
 });
