@@ -71,22 +71,29 @@ const HeroSection = memo(() => {
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start opacity-0 animate-fade-in"
             style={{ animationDelay: "0.25s", animationDuration: "0.3s", animationFillMode: "forwards" }}
           >
-            <Button 
-              variant="default"
-              size="lg" 
-              className="font-medium px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base transition-transform duration-200 hover:scale-105"
-              onClick={() => scrollToSection('philosophy')}
-            >
-              {t("hero.cta.learn")}
-            </Button>
-            <Button 
-              variant="default"
-              size="lg" 
-              className="font-medium px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base transition-transform duration-200 hover:scale-105"
-              onClick={() => scrollToSection('contact')}
-            >
-              {t("hero.cta.contact")}
-            </Button>
+            {/* CTAs */}
+<div 
+  className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start opacity-0 animate-fade-in"
+  style={{ animationDelay: "0.25s", animationDuration: "0.3s", animationFillMode: "forwards" }}
+>
+  <Button 
+    variant="default"
+    size="lg" 
+    className="font-medium px-6 sm:px-8 py-3 sm:py-3 text-sm sm:text-base transition-transform duration-200 transform hover:scale-105 rounded-xl bg-gradient-to-r from-orange-600 to-orange-300 text-white shadow-md"
+    onClick={() => scrollToSection('philosophy')}
+  >
+    {t("hero.cta.learn")} ⚡
+  </Button>
+
+  <Button 
+    variant="default"
+    size="lg" 
+    className="font-medium px-6 sm:px-8 py-3 sm:py-3 text-sm sm:text-base transition-transform duration-200 transform hover:scale-105 rounded-xl bg-gradient-to-r from-orange-500 to-orange-300 text-white shadow-md"
+    onClick={() => scrollToSection('contact')}
+  >
+    {t("hero.cta.contact")}
+  </Button>
+</div>
           </div>
           
           {/* Trust indicators */}
