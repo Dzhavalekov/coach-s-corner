@@ -1,4 +1,4 @@
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Lightbulb, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useState, useMemo, useCallback, memo } from "react";
 import heroBackground from "@/assets/hero-background.png";
@@ -76,9 +76,10 @@ const HeroSection = memo(() => {
     transition={{ duration: 0.45, delay: 0.1 }}
     whileHover={{ scale: 1.04 }}
     whileTap={{ scale: 0.98 }}
-    className="relative rounded-2xl px-8 py-3 sm:py-4 text-base font-semibold text-white shadow-md border border-white/20 bg-white/5 backdrop-blur-sm"
+    className="relative rounded-2xl px-8 py-3 sm:py-4 text-base font-semibold text-white shadow-md border border-white/20 bg-white/5 backdrop-blur-sm flex items-center gap-2"
     aria-label={t("hero.cta.learn")}
   >
+    <Lightbulb className="w-5 h-5" />
     {t("hero.cta.learn")}
   </motion.button>
 
@@ -89,9 +90,10 @@ const HeroSection = memo(() => {
     transition={{ duration: 0.45, delay: 0.22 }}
     whileHover={{ scale: 1.04 }}
     whileTap={{ scale: 0.98 }}
-    className="relative rounded-2xl px-8 py-3 sm:py-4 text-base font-semibold text-white shadow-md border border-white/20 bg-white/5 backdrop-blur-sm"
+    className="relative rounded-2xl px-8 py-3 sm:py-4 text-base font-semibold text-white shadow-md border border-white/20 bg-white/5 backdrop-blur-sm flex items-center gap-2"
     aria-label={t("hero.cta.contact")}
   >
+    <Mail className="w-5 h-5" />
     {t("hero.cta.contact")}
   </motion.button>
 </div>
