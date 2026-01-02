@@ -5,6 +5,11 @@ import heroBackground from "@/assets/hero-background.png";
 import { useLanguage } from "@/contexts/LanguageContext";
 import TrustIndicators from "@/components/TrustIndicators";
 
+// Animation constants
+const BUTTON_HOVER_ANIMATION = { scale: 1.05, y: -2 };
+const BUTTON_TAP_ANIMATION = { scale: 0.98 };
+const FADE_IN_TRANSITION = { duration: 0.6, ease: "easeOut" as const };
+
 const HeroSection = memo(() => {
   const [scrollY, setScrollY] = useState(0);
   const { t } = useLanguage();
@@ -53,7 +58,7 @@ const HeroSection = memo(() => {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            transition={{ ...FADE_IN_TRANSITION, delay: 0.1 }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-[1.1] mb-6 sm:mb-8 text-white drop-shadow-lg"
           >
             {t("hero.title")}{" "}
@@ -67,7 +72,7 @@ const HeroSection = memo(() => {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25, ease: "easeOut" }}
+            transition={{ ...FADE_IN_TRANSITION, delay: 0.25 }}
             className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-[480px] md:max-w-[560px] mb-8 sm:mb-12 leading-relaxed text-white/95 drop-shadow-md font-medium"
           >
             {t("hero.subtitle")}
@@ -80,8 +85,8 @@ const HeroSection = memo(() => {
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-    whileHover={{ scale: 1.05, y: -2 }}
-    whileTap={{ scale: 0.98 }}
+    whileHover={BUTTON_HOVER_ANIMATION}
+    whileTap={BUTTON_TAP_ANIMATION}
     className="group relative rounded-xl px-8 py-4 text-base font-semibold text-white shadow-xl border-2 border-primary bg-primary hover:bg-primary/90 backdrop-blur-sm flex items-center justify-center gap-3 transition-all duration-300"
     aria-label={t("hero.cta.learn")}
   >
@@ -94,8 +99,8 @@ const HeroSection = memo(() => {
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
-    whileHover={{ scale: 1.05, y: -2 }}
-    whileTap={{ scale: 0.98 }}
+    whileHover={BUTTON_HOVER_ANIMATION}
+    whileTap={BUTTON_TAP_ANIMATION}
     className="group relative rounded-xl px-8 py-4 text-base font-semibold text-white shadow-xl border-2 border-white/30 bg-white/10 hover:bg-white/20 hover:border-white/50 backdrop-blur-md flex items-center justify-center gap-3 transition-all duration-300"
     aria-label={t("hero.cta.contact")}
   >
@@ -113,7 +118,7 @@ const HeroSection = memo(() => {
       <motion.div 
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+        transition={{ ...FADE_IN_TRANSITION, delay: 0.8 }}
         className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
         <button 
